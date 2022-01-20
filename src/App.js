@@ -46,13 +46,13 @@ function App() {
         <fieldset>
           <label>
             <p>Name</p>
-            <input name="name" onChange={handleChange}/>
+            <input name="name" onChange={handleChange} value={formData.name || ''}/>
           </label>
         </fieldset>
         <fieldset>
          <label>
            <p>Apples</p>
-           <select name="apple" onChange={handleChange}>
+           <select name="apple" onChange={handleChange} value={formData.apple || ''}>
                <option value="">--Please choose an option--</option>
                <option value="fuji">Fuji</option>
                <option value="jonathan">Jonathan</option>
@@ -61,11 +61,11 @@ function App() {
          </label>
          <label>
            <p>Count</p>
-           <input type="number" name="count" onChange={handleChange} step="1"/>
+           <input type="number" name="count" onChange={handleChange} step="1" value={formData.count || ''}/>
          </label>
          <label>
            <p>Gift Wrap</p>
-           <input type="checkbox" name="gift-wrap" onChange={handleChange} />
+           <input type="checkbox" name="gift-wrap" onChange={handleChange} checked={formData['gift-wrap'] || false} />
          </label>
        </fieldset>
         <button type="submit">Submit</button>
