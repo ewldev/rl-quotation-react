@@ -59,10 +59,10 @@ function App() {
             <p>Count</p>
             <input type="number" name="count" onChange={handleChange} step="1" />
           </label>
-          <label>
+          <label hidden={formData.apple !== 'fuji'}>
             <p>Gift Wrap</p>
             <input
-             disabled={formData.apple !== 'fuji'}
+            //  hidden={formData.apple !== 'fuji'}
              name="gift-wrap"
              onChange={handleChange}
              type="checkbox"
