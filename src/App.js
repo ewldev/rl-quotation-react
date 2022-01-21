@@ -8,9 +8,6 @@ const formReducer = (state, event) => {
   }
 }
 
-
-
-
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
@@ -29,8 +26,7 @@ function App() {
       name: event.target.name,
       value: event.target.value
     });
-  }
- 
+  } 
   
   return(
     <div id="container">
@@ -46,48 +42,57 @@ function App() {
           </ul>
         </div>
       }
-      <form onSubmit={handleSubmit}>
+      <form id="form" onSubmit={handleSubmit}>
         
-        <fieldset disabled={submitting}>
-          <label>
-            <p>Type of service</p>
-            <select name="service" onChange={handleChange} required>
-                <option value="" >--Please choose an option--</option>
-                <option value="financial statements & tax returns preparation">Financial statements & tax returns preparation</option>
-                <option value="incorporation & business accounts registration">Incorporation & business accounts registration</option>
-                <option value="personal tax preparation">Personal tax preparation</option>
-            </select>
-          </label>
+          <label htmlFor="service">Type of service</label>                
+          <select name="service" id="service" onChange={handleChange} required>
+            <option value="" >--Please choose an option--</option>
+            <option value="financial statements & tax returns preparation">Financial statements & tax returns preparation</option>
+            <option value="incorporation & business accounts registration">Incorporation & business accounts registration</option>
+            <option value="personal tax preparation">Personal tax preparation</option>        
+          </select>   
+                          
+          <div hidden={formData.service !== 'financial statements & tax returns preparation'}>
+            <label htmlFor="category" >Category</label> 
+            <select name="category" id="category"    
+              onChange={handleChange} 
+              required={formData.service === 'financial statements & tax returns preparation'}>
+              <option value="" >--Please choose an option--</option>
+              <option value="compilation">Compilation</option>
+              <option value="review-engagement">Review Engagement</option>
+              <option value="audit-engagement">Audit Engagement</option>            
+            </select>          
+          </div>         
           
-          <label hidden={formData.service !== 'financial statements & tax returns preparation'}>
-            <p>Category</p>
-            <select name="category" onChange={handleChange}
-             required={formData.service === 'financial statements & tax returns preparation'} >
-                <option value="" >--Please choose an option--</option>
-                <option value="compilation">Compilation</option>
-                <option value="review-engagement">Review Engagement</option>
-                <option value="audit-engagement">Audit Engagement</option>
-            </select>
-          </label>
-          
-          <label hidden={formData.category !== 'compilation'}>
-            <p>Transactions per year</p>
-            <select name="compilationTxn" onChange={handleChange} required={formData.category === 'compilation'} >
+          <div hidden={formData.category !== 'compilation'}>
+            <label for="compilationTxn">Transactions per year</label> 
+              <select name="compilationTxn" id="compilationTxn" 
+              onChange={handleChange}
+              required={formData.category === 'compilation'} >
               <option value="">--Please choose an option--</option>
               <option value="fifty-txn">0-50</option>
               <option value="onefifty-txn">50-150</option>
               <option value="onefiftyplus-txn">150+</option>
-            </select>
-          </label>  
-        </fieldset>
+            </select>           
+          </div>   
 
-        <fieldset disabled={submitting}>
+          <div hidden={formData.category !== 'review-engagement'}>
+            <label for="reviewTxn">Transactions per year</label>
+            <select name="reviewTxn" id="reviewTxn"
+            onChange={handleChange}
+            required={formData.category === 'review-engagement'}>
+              <option value="" disabled selected >Select your option</option>
+              <option value="10">150+</option>                      
+            </select>
+          </div>
+        
           <label>
             <p>Email address</p>
+          </label>  
             <input type="email" id="email" name="email" placeholder="email@address.com" 
              onChange={handleChange} />
-          </label>
-        </fieldset>
+          
+        
         <button type="submit" disabled={submitting}>Submit</button>
       </form>
 

@@ -97,6 +97,7 @@ form {
   }
 
   form select {
+    width: 305px;
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 20px;
@@ -203,10 +204,10 @@ form {
   }
 
 @media screen and (min-width: 500px) {
-    .container {
+    #container {
       width: 100%;
     }
-    form {
+    form select {
       width: 369px;
     }
     #button-close2 {
@@ -217,7 +218,7 @@ form {
 }   
 
 @media screen and (min-width: 640px) {
-  .container {
+  #container {
     width: 640px;
   }
 }  
