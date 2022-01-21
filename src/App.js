@@ -8,6 +8,9 @@ const formReducer = (state, event) => {
   }
 }
 
+
+
+
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
@@ -27,9 +30,11 @@ function App() {
       value: event.target.value
     });
   }
-
+ 
+  
   return(
-    <div className="container">
+    <div id="container">
+      <button id='button-close1'>close</button>
       <h1>Get an Instant Quotation</h1>
       {submitting &&
         <div>
@@ -85,8 +90,28 @@ function App() {
         </fieldset>
         <button type="submit" disabled={submitting}>Submit</button>
       </form>
+
+      <button id='button-close2'>back to our site</button>
+
     </div>
   )
 }
+
+// close buttons
+window.onload = function(){
+  document.getElementById('button-close1').onclick = function(){
+      // this.parentNode.parentNode.parentNode
+      // .removeChild(this.parentNode.parentNode);
+      // return false;
+    document.getElementById('container').style.display = 'none';  
+  };
+  document.getElementById('button-close2').onclick = function(){
+    // this.parentNode.parentNode.parentNode
+    // .removeChild(this.parentNode.parentNode);
+    // return false;
+    document.getElementById('container').style.display = 'none';  
+  };
+};
+
 
 export default App;  
