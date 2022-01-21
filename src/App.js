@@ -47,27 +47,34 @@ function App() {
         
         <fieldset disabled={submitting}>
           <label>
-            <p>Apples</p>
-            <select name="apple" onChange={handleChange} >
+            <p>Type of service</p>
+            <select name="service" onChange={handleChange} required>
                 <option value="">--Please choose an option--</option>
-                <option value="fuji">Fuji</option>
-                <option value="jonathan">Jonathan</option>
-                <option value="honey-crisp">Honey Crisp</option>
+                <option value="financial statements & tax returns preparation">Financial statements & tax returns preparation</option>
+                <option value="incorporation & business accounts registration">Incorporation & business accounts registration</option>
+                <option value="personal tax preparation">Personal tax preparation</option>
             </select>
           </label>
-          <label>
-            <p>Count</p>
-            <input type="number" name="count" onChange={handleChange} step="1" />
+          
+          <label hidden={formData.service !== 'financial statements & tax returns preparation'}>
+            <p>Category</p>
+            <select name="category" onChange={handleChange} >
+                <option value="">--Please choose an option--</option>
+                <option value="compilation">Compilation</option>
+                <option value="review-engagement">Review Engagement</option>
+                <option value="audit-engagement">Audit Engagement</option>
+            </select>
           </label>
-          <label hidden={formData.apple !== 'fuji'}>
-            <p>Gift Wrap</p>
-            <input
-            //  hidden={formData.apple !== 'fuji'}
-             name="gift-wrap"
-             onChange={handleChange}
-             type="checkbox"
-            />
-          </label>
+          
+          <label hidden={formData.category !== 'compilation'}>
+            <p>Transactions per year</p>
+            <select name="compilationTxn" onChange={handleChange} >
+              <option value="">--Please choose an option--</option>
+              <option value="fifty-txn">0-50</option>
+              <option value="onefifty-txn">50-150</option>
+              <option value="onefiftyplus-txn">150+</option>
+            </select>
+          </label>  
         </fieldset>
 
         <fieldset disabled={submitting}>
