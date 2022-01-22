@@ -65,8 +65,8 @@ function App() {
           </div>         
           
           <div hidden={formData.category !== 'compilation'}>
-            <label for="compilationTxn">Transactions per year</label> 
-              <select name="compilationTxn" id="compilationTxn" 
+            <label htmlFor="compilationTxn">Transactions per year</label> 
+            <select name="compilationTxn" id="compilationTxn" 
               onChange={handleChange}
               required={formData.category === 'compilation'} >
               <option value="">--Please choose an option--</option>
@@ -77,23 +77,68 @@ function App() {
           </div>   
 
           <div hidden={formData.category !== 'review-engagement'}>
-            <label for="reviewTxn">Transactions per year</label>
-            <select name="reviewTxn" id="reviewTxn"
-            onChange={handleChange}
-            required={formData.category === 'review-engagement'}>
-              <option value="" disabled selected >Select your option</option>
-              <option value="10">150+</option>                      
+            <label htmlFor="reviewTxn">Transactions per year</label>
+            <select name="reviewTxn" id="reviewTxn">
+              <option value="">150+</option>                                        
+            </select>
+          </div>
+
+          <div hidden={formData.category !== 'audit-engagement'}>
+            <label htmlFor="auditTxn">Transactions per year</label>
+            <select name="auditTxn" id="auditTxn">            
+              <option value="">150+</option>              
             </select>
           </div>
         
-          <label>
-            <p>Email address</p>
-          </label>  
-            <input type="email" id="email" name="email" placeholder="email@address.com" 
-             onChange={handleChange} />
+          <div hidden={formData.compilationTxn !== 'fifty-txn'}>
+            <label htmlFor="fiftyService">Available services (optional)</label>
+            <select name="fiftyService" id="fiftyService"
+            onChange={handleChange}>                       
+              <option value="" >Select your option</option>
+              <option value="consulting-business1">Consulting business</option>
+              <option value="holdings-company1">Holdings company</option>
+            </select>
+          </div> 
           
-        
-        <button type="submit" disabled={submitting}>Submit</button>
+          <div hidden={formData.compilationTxn !== 'onefifty-txn'}>
+            <label htmlFor="oneFiftyService">Available services (optional)</label>
+            <select name="oneFiftyService" id="oneFiftyService"
+            onChange={handleChange}>
+              <option value="" >Select your option</option>
+              <option value="consulting-business2">Consulting business</option>
+              <option value="holdings-company2">Holdings company</option>
+              <option value="trading-retail2">Trading / Retail</option>
+              <option value="mortgage-insurance-broker2">Mortgage insurance broker</option>
+              <option value="home-renovation-contractor2">Home renovation contractor</option>
+              <option value="medical-professional-corporation2">Medical professional corporation</option>
+            </select>
+          </div>  
+
+          <div hidden={formData.compilationTxn !== 'onefiftyplus-txn'}>
+            <label htmlFor="oneFiftyPlusService">Available services (optional)</label>
+            <select name="oneFiftyPlusService" id="oneFiftyPlusService"
+            onChange={handleChange} >
+              <option value="" >Select your option</option>
+              <option value="consulting-business3">Consulting business</option>
+              <option value="holdings-company3">Holdings company</option>
+              <option value="trading-retail3">Trading / Retail</option>
+              <option value="manufacturing3">Manufacturing</option>
+              <option value="restaurant3">Restaurant</option>
+              <option value="mortgage-insurance-broker3">Mortgage insurance broker</option>
+              <option value="home-renovation-contractor3">Home renovation contractor</option>
+              <option value="medical-professional-corporation3">Medical professional corporation</option>
+            </select>
+          </div>           
+
+          <label htmlFor="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="email@address.com" 
+             onChange={handleChange} />         
+          
+          <button type="submit" disabled={submitting}>Submit</button>
+
+          <label htmlFor="result">Estimated cost of service</label> 
+          <output name="result" type="text" id="result"> </output>    
+
       </form>
 
       <button id='button-close2'>back to our site</button>
