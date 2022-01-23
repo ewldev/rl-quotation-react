@@ -4,7 +4,7 @@ import './App.css';
 const formReducer = (state, event) => {
  return {
     ...state,
-    [event.name]: event.value,    
+    [event.name]: event.value,      
   }
 }
 
@@ -15,10 +15,10 @@ function App() {
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
-
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 3000);
+    calculate();
+    // setTimeout(() => {
+    //   setSubmitting(false);
+    // }, 13000);
   }
 
   const handleChange = event => {
@@ -41,7 +41,7 @@ function App() {
             ))}
           </ul>
         </div>
-      }
+      } 
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
@@ -136,8 +136,24 @@ function App() {
           
           <button type="submit" disabled={submitting}>Submit</button>
 
-          <label htmlFor="result">Estimated cost of service</label> 
-          <output name="result" type="text" id="result"> </output>    
+          <label htmlFor="result" hidden={formData.service !== 'financial statements & tax returns preparation'} >Estimated cost of service
+            <output name="result" type="text" id="result">
+            </output> 
+          </label>
+
+          {/* Incorporation & business accounts registration */}
+          <div id="div2">
+          <p>$800 <br></br>
+          business trade name add $100</p>
+          </div>
+
+          {/*Personal tax preparation*/}
+          <div id="div3">
+            <p>standard $150 <br></br>
+               capital gain/loss add $100  <br></br>
+               self-employed business add $250 <br></br>
+               foreign property declaration add $150 </p>    
+          </div>           
 
       </form>
 
@@ -147,13 +163,131 @@ function App() {
   )
 }
 
+// process quotation value 
+function calculate() { 
+  const service = document.getElementById('service');
+  const compilation = document.getElementById('compilationTxn');
+  const reviewEgmt = document.getElementById('reviewTxn');
+  const auditEgmt = document.getElementById('auditTxn');
+  const fiftyTxn = document.getElementById('fiftyService');
+  const oneFiftyTxn = document.getElementById('oneFiftyService');  
+  const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+  const result = document.getElementById('result');
+  
+    switch(service.value) {
+      case 'incorporation & business accounts registration':
+        document.getElementById('div2').style.display = 'block';     
+        result.value = '$800 - business trade name add $100';
+        result.style.display = 'none'; 
+        break;
+      case 'personal tax preparation':
+        document.getElementById('div3').style.display = 'block'; 
+        result.value = `<p>standard $150 <br>
+        capital gain/loss add $100 <br>
+        self-employed business add $250 <br>
+        foreign property declaration add $150            
+      </p>`
+        result.style.display = 'none'; 
+        break;
+      default:
+        break;  
+    }
+    switch(compilation.value) {
+      case 'fifty-txn':
+        result.value = '$1500-$1800';
+        break;
+      case 'onefifty-txn':
+        result.value = '$1800-$2500';
+        break;
+      case 'onefiftyplus-txn':
+        result.value  = '$2500-$3500'; 
+        break;
+      default:
+         break;  
+    }
+    switch(reviewEgmt.value) {
+      case '10':
+        result.value = '$5500-$7500';
+        break;
+      default:
+        break;  
+    }
+    switch(auditEgmt.value) {
+      case '11':
+        result.value = '$9000-$12000';
+        break;
+      default:
+         break;  
+    }
+    switch(fiftyTxn.value) {      
+      case 'consulting-business1':
+        result.value  = '$1500';  
+        break;
+      case 'holdings-company1':
+        result.value = '$1700'; 
+        break;
+      default:
+        break;   
+    }    
+    switch(oneFiftyTxn.value) {
+      case 'consulting-business2':
+        result.value = '$1800';
+        break;
+      case 'holdings-company2':
+        result.value = '$2000';
+        break;
+      case 'trading-retail2':
+        result.value = '$2500';
+        break;
+      case 'mortgage-insurance-broker2':
+        result.value = '$1800';
+        break;
+      case 'home-renovation-contractor2':
+        result.value = '$2300';
+        break;
+      case 'medical-professional-corporation2':
+        result.value = '$2500';
+        break;
+      default:
+        break;  
+    }  
+    switch(oneFiftyPlusTxn.value) {
+      case 'consulting-business3':
+        result.value = '$2500';
+        break;
+      case 'holdings-company3':
+        result.value = '$2700';
+        break;
+      case 'trading-retail3':
+        result.value = '$3200'; 
+        break;
+      case 'manufacturing3':
+        result.value = '$3500';
+        break;
+      case 'restaurant3':
+        result.value = '$3500';
+        break;  
+      case 'mortgage-insurance-broker3':        
+        result.value = '$2500';
+        break;
+      case 'home-renovation-contractor3':
+        result.value = '$3000';
+        break;
+      case 'medical-professional-corporation3':
+        result.value = '$3500';
+        break;
+      default:
+        break;    
+    }    
+  }  
+
 // close buttons
 window.onload = function(){
   document.getElementById('button-close1').onclick = function(){
-      // this.parentNode.parentNode.parentNode
-      // .removeChild(this.parentNode.parentNode);
-      // return false;
-    document.getElementById('container').style.display = 'none';  
+      /* this.parentNode.parentNode.parentNode
+       .removeChild(this.parentNode.parentNode);
+       return false;*/
+    document.getElementById('container').style.display = 'none'; 
   };
   document.getElementById('button-close2').onclick = function(){
     // this.parentNode.parentNode.parentNode
