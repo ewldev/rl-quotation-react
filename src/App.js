@@ -14,19 +14,79 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);
+    setSubmitting(true);    
     calculate();
     // setTimeout(() => {
     //   setSubmitting(false);
     // }, 13000);
   }
 
-  const handleChange = event => {
+  const handleChange1 = event =>  {
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });
+    });    
+    resetCategory();  
+    resetTransactions();
+    resetServiceValues();
+    resetResultValue();
   } 
+
+  const handleChange2 = event =>  {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value
+    });    
+    resetTransactions();
+    resetServiceValues();
+    resetResultValue();
+  } 
+
+  const handleChange3 = event =>  {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value
+    });    
+    resetServiceValues();
+    resetResultValue();
+  } 
+
+  const handleChange4 = event =>  {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value
+    });    
+    resetResultValue();
+  } 
+
+  
+  function resetCategory() {
+    const category = document.getElementById('category');
+    category.value = '';
+}
+
+function resetTransactions() {
+  const compilation = document.getElementById('compilationTxn');
+  const reviewEgmt = document.getElementById('reviewTxn');
+  const auditEgmt = document.getElementById('auditTxn');
+  compilation.value = '';
+  reviewEgmt.value = '';
+  auditEgmt.value = '';
+}
+
+function resetServiceValues() {
+  const fiftyTxn = document.getElementById('fiftyService');
+  const oneFiftyTxn = document.getElementById('oneFiftyService');  
+  const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+  fiftyTxn.value = '';
+  oneFiftyTxn.value = ''; 
+  oneFiftyPlusTxn.value = '';    
+}
+
+function resetResultValue() {
+  const result = document.getElementById('result');
+  result.value = '';    
+}
   
   return(
     <div id="container">
@@ -45,7 +105,7 @@ function App() {
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
-          <select name="service" id="service" onChange={handleChange} required>
+          <select name="service" id="service" onChange={handleChange1} required>
             <option value="" >--Please choose an option--</option>
             <option value="financial statements & tax returns preparation">Financial statements & tax returns preparation</option>
             <option value="incorporation & business accounts registration">Incorporation & business accounts registration</option>
@@ -55,7 +115,7 @@ function App() {
           <div hidden={formData.service !== 'financial statements & tax returns preparation'}>
             <label htmlFor="category" >Category</label> 
             <select name="category" id="category"    
-              onChange={handleChange} 
+              onChange={handleChange2} 
               required={formData.service === 'financial statements & tax returns preparation'}>
               <option value="" >--Please choose an option--</option>
               <option value="compilation">Compilation</option>
@@ -67,7 +127,7 @@ function App() {
           <div hidden={formData.category !== 'compilation'}>
             <label htmlFor="compilationTxn">Transactions per year</label> 
             <select name="compilationTxn" id="compilationTxn" 
-              onChange={handleChange}
+              onChange={handleChange3}
               required={formData.category === 'compilation'} >
               <option value="">--Please choose an option--</option>
               <option value="fifty-txn">0-50</option>
@@ -93,7 +153,7 @@ function App() {
           <div hidden={formData.compilationTxn !== 'fifty-txn'}>
             <label htmlFor="fiftyService">Available services (optional)</label>
             <select name="fiftyService" id="fiftyService"
-            onChange={handleChange}>                       
+            onChange={handleChange4}>                       
               <option value="" >Select your option</option>
               <option value="consulting-business1">Consulting business</option>
               <option value="holdings-company1">Holdings company</option>
@@ -103,7 +163,7 @@ function App() {
           <div hidden={formData.compilationTxn !== 'onefifty-txn'}>
             <label htmlFor="oneFiftyService">Available services (optional)</label>
             <select name="oneFiftyService" id="oneFiftyService"
-            onChange={handleChange}>
+            onChange={handleChange4}>
               <option value="" >Select your option</option>
               <option value="consulting-business2">Consulting business</option>
               <option value="holdings-company2">Holdings company</option>
@@ -117,7 +177,7 @@ function App() {
           <div hidden={formData.compilationTxn !== 'onefiftyplus-txn'}>
             <label htmlFor="oneFiftyPlusService">Available services (optional)</label>
             <select name="oneFiftyPlusService" id="oneFiftyPlusService"
-            onChange={handleChange} >
+            onChange={handleChange4} >
               <option value="" >Select your option</option>
               <option value="consulting-business3">Consulting business</option>
               <option value="holdings-company3">Holdings company</option>
@@ -132,7 +192,7 @@ function App() {
 
           <label htmlFor="email">Email address</label>
           <input type="email" id="email" name="email" placeholder="email@address.com" 
-             onChange={handleChange} />         
+             onChange={handleChange1} />         
           
           <button type="submit" disabled={submitting}>Submit</button>
 
