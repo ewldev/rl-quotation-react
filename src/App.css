@@ -4,7 +4,7 @@
   box-sizing: border-box;
 } */
 
-body {
+#root {
   margin: 0;
   min-height: 100vh;
   font-family: Sen, sans-serif;
@@ -76,20 +76,20 @@ h1 {
   flex-direction: column;
 }
 
-form {
+#form {
     width: 305px;
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
   }
 
-  form label {
+  #form label {
     font-size: 17px;
     margin-bottom: 4px;
   }
 
-  form select {
-    /* width: 305px; */
+  #form select {
+    width: 305px;
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 20px;
@@ -97,7 +97,7 @@ form {
     font-size: 15px;
   }
 
-  form button {
+  #form button {
     cursor: pointer;
     color: #2c2102;    
     /* color: #0c52b4;*/
@@ -114,7 +114,7 @@ form {
     margin-bottom: 35px;    
   }
 
-  form button:hover {
+  #form button:hover {
     /* filter: brightness(200%); */
     color: rgb(31, 28, 28);
     background: orange;
@@ -122,7 +122,7 @@ form {
 
   
   
- form input {
+ #form input {
     width: 100%;
     height: 34px;
     padding: 5px;
@@ -134,15 +134,15 @@ form {
     font-size: 15px
   }
   
-  form input:valid {
+  #form input:valid {
     border: 1px solid green;
   }
   
-  form input:invalid {
+  #form input:invalid {
     border: 1px solid red;
   }
 
-  form output {
+  #form output {
     width: 75%;
     height: 34px;
     padding: 5px;
@@ -199,10 +199,10 @@ form {
     #container {
       width: 100%;
     }
-    /* form select {
+    #form select {
       width: 369px;
-    } */
-    form {
+    }
+    #form {
       width: 369px;
     }
     #button-close2 {
