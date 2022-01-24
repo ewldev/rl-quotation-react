@@ -2,6 +2,15 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {
+  if(event.rese) {
+    return {
+      category: '',
+      compilationTxn: '',
+      fiftyService: '',
+      oneFiftyService: '',
+      oneFiftyPlusService: ''
+    }
+  } 
  return {
     ...state,
     [event.name]: event.value,      
@@ -14,49 +23,60 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);    
+    setSubmitting(true);     
     calculate();
-    // setTimeout(() => {
-    //   setSubmitting(false);
-    // }, 13000);
   }
 
   const handleChange1 = event =>  {
+    const result = document.getElementById('result');
+    // resetCategory();  
+    // resetTransactions();
+    // resetServiceValues();
+    resetResultValue();
+    setFormData({
+      rese: true
+    })
     setFormData({
       name: event.target.name,
       value: event.target.value
     });    
-    resetCategory();  
-    resetTransactions();
-    resetServiceValues();
-    resetResultValue();
+    result.style.display = 'inline';   
   } 
 
   const handleChange2 = event =>  {
+    // resetTransactions();
+    // resetServiceValues();
+    // resetResultValue();
+    setFormData({
+      rese: true
+    })
     setFormData({
       name: event.target.name,
       value: event.target.value
     });    
-    resetTransactions();
-    resetServiceValues();
-    resetResultValue();
   } 
 
   const handleChange3 = event =>  {
+    // resetServiceValues();
+    // resetResultValue();
+    setFormData({
+      rese: true
+    })
     setFormData({
       name: event.target.name,
       value: event.target.value
     });    
-    resetServiceValues();
-    resetResultValue();
   } 
 
   const handleChange4 = event =>  {
+    resetResultValue();
+    setFormData({
+      rese: true
+    })
     setFormData({
       name: event.target.name,
       value: event.target.value
     });    
-    resetResultValue();
   } 
 
   
@@ -194,13 +214,15 @@ function resetResultValue() {
           <input type="email" id="email" name="email" placeholder="email@address.com" 
              onChange={handleChange1} />         
           
-          <button type="submit" disabled={submitting}>Submit</button>
+          <button type="submit" >Submit</button>
 
-          <label htmlFor="result" hidden={formData.service !== 'financial statements & tax returns preparation'} >Estimated cost of service
+          <label htmlFor="result"
+          // hidden={formData.service !== 'financial statements & tax returns preparation'}
+          >Estimated cost of service</label>
+
             <output name="result" type="text" id="result">
             </output> 
-          </label>
-
+          
           {/* Incorporation & business accounts registration */}
           <div id="div2">
           <p>$800 <br></br>

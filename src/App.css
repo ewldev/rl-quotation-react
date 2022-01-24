@@ -89,7 +89,7 @@ form {
   }
 
   form select {
-    width: 305px;
+    /* width: 305px; */
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 20px;
@@ -199,7 +199,10 @@ form {
     #container {
       width: 100%;
     }
-    form select {
+    /* form select {
+      width: 369px;
+    } */
+    form {
       width: 369px;
     }
     #button-close2 {
