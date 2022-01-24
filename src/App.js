@@ -1,21 +1,73 @@
 import React, { useReducer, useState } from 'react';
 import './App.css';
 
-const formReducer = (state, event) => {
-  if(event.rese) {
-    return {
-      category: '',
-      compilationTxn: '',
-      fiftyService: '',
-      oneFiftyService: '',
-      oneFiftyPlusService: ''
-    }
-  } 
- return {
-    ...state,
-    [event.name]: event.value,      
-  }
-}
+// const formReducer = (state, event) => {  
+//   if (event.reset3) {
+//       return {
+//         fiftyService: '',
+//         oneFiftyService: '',
+//         oneFiftyPlusService: '',
+//       }
+//   } else if (event.reset2) {
+//       return {
+//        compilationTxn: '', 
+//        fiftyService: '',
+//        oneFiftyService: '',
+//        oneFiftyPlusService: '',
+//       }   
+//   } else if (event.reset1) {
+//       return {
+//         category: '',
+//         compilationTxn: '', 
+//         fiftyService: '',
+//         oneFiftyService: '',
+//         oneFiftyPlusService: '',
+//       }   
+//   }
+//   else return {
+//     ...state,
+//     [event.name]: event.value,      
+//   }
+// }
+
+const formReducer = (state, event) => {  
+  switch(event.value) {
+    case 'reset3':
+      return {
+        fiftyService: '',
+        oneFiftyService: '',
+        oneFiftyPlusService: '',
+      };
+      break;
+    case 'reset2':
+      return {
+        compilationTxn: '', 
+        fiftyService: '',
+        oneFiftyService: '',
+        oneFiftyPlusService: '',
+       }; 
+       break;  
+    case 'reset1':
+      return {
+        category: '',
+        compilationTxn: '', 
+        fiftyService: '',
+        oneFiftyService: '',
+        oneFiftyPlusService: '',
+      }; 
+      break;
+      default:
+      break;
+    } 
+       
+      return {
+        ...state,
+        [event.name]: event.value,      
+      };
+    }  
+  
+  
+
 
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
@@ -23,85 +75,53 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);     
-    calculate();
+    setSubmitting(true); 
+    calculate(); 
   }
 
   const handleChange1 = event =>  {
     const result = document.getElementById('result');
-    // resetCategory();  
-    // resetTransactions();
-    // resetServiceValues();
     resetResultValue();
     setFormData({
-      rese: true
-    })
+      reset1: true
+    })    
+    result.style.display = 'inline';  
     setFormData({
       name: event.target.name,
-      value: event.target.value
-    });    
-    result.style.display = 'inline';   
+      value: event.target.value,      
+    });   
   } 
 
   const handleChange2 = event =>  {
-    // resetTransactions();
-    // resetServiceValues();
-    // resetResultValue();
+    resetResultValue();
     setFormData({
-      rese: true
-    })
+      reset2: true
+    })    
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });    
+    });        
   } 
 
   const handleChange3 = event =>  {
-    // resetServiceValues();
-    // resetResultValue();
-    setFormData({
-      rese: true
-    })
+    resetResultValue();
+     setFormData({
+      reset3: true
+    })    
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });    
+    });     
+    resetResultValue();  
   } 
 
   const handleChange4 = event =>  {
     resetResultValue();
     setFormData({
-      rese: true
-    })
-    setFormData({
       name: event.target.name,
       value: event.target.value
     });    
   } 
-
-  
-  function resetCategory() {
-    const category = document.getElementById('category');
-    category.value = '';
-}
-
-function resetTransactions() {
-  const compilation = document.getElementById('compilationTxn');
-  const reviewEgmt = document.getElementById('reviewTxn');
-  const auditEgmt = document.getElementById('auditTxn');
-  compilation.value = '';
-  reviewEgmt.value = '';
-  auditEgmt.value = '';
-}
-
-function resetServiceValues() {
-  const fiftyTxn = document.getElementById('fiftyService');
-  const oneFiftyTxn = document.getElementById('oneFiftyService');  
-  const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
-  fiftyTxn.value = '';
-  oneFiftyTxn.value = ''; 
-  oneFiftyPlusTxn.value = '';    
-}
 
 function resetResultValue() {
   const result = document.getElementById('result');
@@ -125,30 +145,30 @@ function resetResultValue() {
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
-          <select name="service" id="service" onChange={handleChange1} required>
+          <select name="service" id="service"
+            onChange={handleChange1} required>
             <option value="" >--Please choose an option--</option>
             <option value="financial statements & tax returns preparation">Financial statements & tax returns preparation</option>
             <option value="incorporation & business accounts registration">Incorporation & business accounts registration</option>
             <option value="personal tax preparation">Personal tax preparation</option>        
           </select>   
-                          
-          <div hidden={formData.service !== 'financial statements & tax returns preparation'}>
-            <label htmlFor="category" >Category</label> 
-            <select name="category" id="category"    
-              onChange={handleChange2} 
-              required={formData.service === 'financial statements & tax returns preparation'}>
-              <option value="" >--Please choose an option--</option>
-              <option value="compilation">Compilation</option>
-              <option value="review-engagement">Review Engagement</option>
-              <option value="audit-engagement">Audit Engagement</option>            
-            </select>          
-          </div>         
-          
+        
+    <label htmlFor='category' hidden={formData.service !== 'financial statements & tax returns preparation'}>Category </label>  
+    <select name="category" id="category"  
+      onChange={handleChange2} 
+      hidden={formData.service !== 'financial statements & tax returns preparation'}      
+      required={formData.service === 'financial statements & tax returns preparation'} >      
+      <option value="" >--Please choose an option--</option>
+      <option value="compilation">Compilation</option>
+      <option value="review-engagement">Review Engagement</option>
+      <option value="audit-engagement">Audit Engagement</option>            
+    </select>           
+
           <div hidden={formData.category !== 'compilation'}>
             <label htmlFor="compilationTxn">Transactions per year</label> 
             <select name="compilationTxn" id="compilationTxn" 
               onChange={handleChange3}
-              required={formData.category === 'compilation'} >
+              required={formData.category === 'compilation'} >             
               <option value="">--Please choose an option--</option>
               <option value="fifty-txn">0-50</option>
               <option value="onefifty-txn">50-150</option>
@@ -173,7 +193,7 @@ function resetResultValue() {
           <div hidden={formData.compilationTxn !== 'fifty-txn'}>
             <label htmlFor="fiftyService">Available services (optional)</label>
             <select name="fiftyService" id="fiftyService"
-            onChange={handleChange4}>                       
+            onChange={handleChange4} >                       
               <option value="" >Select your option</option>
               <option value="consulting-business1">Consulting business</option>
               <option value="holdings-company1">Holdings company</option>
@@ -183,7 +203,7 @@ function resetResultValue() {
           <div hidden={formData.compilationTxn !== 'onefifty-txn'}>
             <label htmlFor="oneFiftyService">Available services (optional)</label>
             <select name="oneFiftyService" id="oneFiftyService"
-            onChange={handleChange4}>
+            onChange={handleChange4} >
               <option value="" >Select your option</option>
               <option value="consulting-business2">Consulting business</option>
               <option value="holdings-company2">Holdings company</option>
@@ -211,17 +231,12 @@ function resetResultValue() {
           </div>           
 
           <label htmlFor="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="email@address.com" 
-             onChange={handleChange1} />         
+          <input type="email" id="email" name="email" placeholder="email@address.com" />         
           
           <button type="submit" >Submit</button>
 
-          <label htmlFor="result"
-          // hidden={formData.service !== 'financial statements & tax returns preparation'}
-          >Estimated cost of service</label>
-
-            <output name="result" type="text" id="result">
-            </output> 
+          <label htmlFor="result">Estimated cost of service</label>
+          <output name="result" type="text" id="result"></output> 
           
           {/* Incorporation & business accounts registration */}
           <div id="div2">
