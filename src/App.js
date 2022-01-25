@@ -113,13 +113,10 @@ function App() {
     setFormData({      
       name: event.target.name,
       value: event.target.value,
-      // fiftyService: '',
+      //fiftyService: '',
       // oneFiftyService: '',
       // oneFiftyPlusService: '',
-
-    }); 
-    
-    
+    });    
     console.log('formData.oneFiftyPlusService2',formData.oneFiftyPlusService)  
   } 
 
@@ -295,9 +292,8 @@ const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
 // process quotation value 
 function calculate() { 
   const service = document.getElementById('service');
+  const category = document.getElementById('category')
   const compilation = document.getElementById('compilationTxn');
-  const reviewEgmt = document.getElementById('reviewTxn');
-  const auditEgmt = document.getElementById('auditTxn');
   const fiftyTxn = document.getElementById('fiftyService');
   const oneFiftyTxn = document.getElementById('oneFiftyService');  
   const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
@@ -334,19 +330,15 @@ function calculate() {
       default:
          break;  
     }
-    switch(reviewEgmt.value) {
-      case '10':
+    switch(category.value) {
+      case 'review-engagement':
         result.value = '$5500-$7500';
+        break;
+      case 'audit-engagement':
+        result.value = '$9000-$12000';  
         break;
       default:
         break;  
-    }
-    switch(auditEgmt.value) {
-      case '11':
-        result.value = '$9000-$12000';
-        break;
-      default:
-         break;  
     }
     switch(fiftyTxn.value) {      
       case 'consulting-business1':
