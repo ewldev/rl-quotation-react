@@ -1,7 +1,10 @@
 import React, { useReducer, useState } from 'react';
+// import React, { useReducer } from 'react';
 import './App.css';
 
 // const formReducer = (state, event) => {  
+//   const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+//   console.log('formReducer oneFiftyPlusTxn.value',oneFiftyPlusTxn.value)  
 //   if (event.reset3) {
 //       return {
 //         fiftyService: '',
@@ -22,15 +25,20 @@ import './App.css';
 //         fiftyService: '',
 //         oneFiftyService: '',
 //         oneFiftyPlusService: '',
-//       }   
+//       }
+      
+     
 //   }
-//   else return {
+//   else return {   
 //     ...state,
 //     [event.name]: event.value,      
 //   }
+    
 // }
 
 const formReducer = (state, event) => {  
+  const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+  console.log('formReducer oneFiftyPlusTxn.value',oneFiftyPlusTxn.value);
   switch(event.value) {
     case 'reset3':
       return {
@@ -38,55 +46,43 @@ const formReducer = (state, event) => {
         oneFiftyService: '',
         oneFiftyPlusService: '',
       };
-      break;
     case 'reset2':
       return {
-        compilationTxn: '', 
-        fiftyService: '',
-        oneFiftyService: '',
-        oneFiftyPlusService: '',
+        compilationTxn: '',        
        }; 
-       break;  
     case 'reset1':
       return {
-        category: '',
-        compilationTxn: '', 
-        fiftyService: '',
-        oneFiftyService: '',
-        oneFiftyPlusService: '',
-      }; 
-      break;
+        category: '',        
+      };       
       default:
-      break;
+        return {
+          ...state,
+          [event.name]: event.value,      
+        };
     } 
-       
-      return {
-        ...state,
-        [event.name]: event.value,      
-      };
-    }  
-  
-  
-
+}     
 
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
-
+  console.log('formData',formData)
   const handleSubmit = event => {
+    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
     event.preventDefault();
     setSubmitting(true); 
-    calculate(); 
+    calculate();   
+    console.log('handleSubmit oneFiftyPlusTxn.value',oneFiftyPlusTxn.value)
   }
 
   const handleChange1 = event =>  {
     const result = document.getElementById('result');
     resetResultValue();
-    setFormData({
-      reset1: true
-    })    
+    // setFormData({
+    //   reset1: true
+    // })    
     result.style.display = 'inline';  
     setFormData({
+      reset1: true,
       name: event.target.name,
       value: event.target.value,      
     });   
@@ -94,25 +90,37 @@ function App() {
 
   const handleChange2 = event =>  {
     resetResultValue();
+    // setFormData({
+    //   reset2: true
+    // })    
     setFormData({
-      reset2: true
-    })    
-    setFormData({
+      reset2: true,
       name: event.target.name,
       value: event.target.value
     });        
   } 
 
-  const handleChange3 = event =>  {
-    resetResultValue();
-     setFormData({
-      reset3: true
-    })    
-    setFormData({
+  const handleChange3 = (event) =>  {
+    console.log('formData.oneFiftyPlusService1',formData.oneFiftyPlusService) 
+    resetServiceValues(); 
+    resetResultValue();    
+    // setFormData({
+    //   fiftyService: '',
+    //   oneFiftyService: '',
+    //   oneFiftyPlusService: '',
+    // })   
+    
+    setFormData({      
       name: event.target.name,
-      value: event.target.value
-    });     
-    resetResultValue();  
+      value: event.target.value,
+      // fiftyService: '',
+      // oneFiftyService: '',
+      // oneFiftyPlusService: '',
+
+    }); 
+    
+    
+    console.log('formData.oneFiftyPlusService2',formData.oneFiftyPlusService)  
   } 
 
   const handleChange4 = event =>  {
@@ -123,15 +131,39 @@ function App() {
     });    
   } 
 
-function resetResultValue() {
+function resetResultValue() { 
   const result = document.getElementById('result');
+  console.log('resetResultValue1',result.value)
   result.value = '';    
+  console.log('resetResultValue2',result.value)
 }
-  
+
+function resetServiceValues() {
+  const fiftyTxn = document.getElementById('fiftyService');
+const oneFiftyTxn = document.getElementById('oneFiftyService');  
+const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
+  fiftyTxn.value = '';
+  oneFiftyTxn.value = ''; 
+  oneFiftyPlusTxn.value = ''; 
+  formData.fiftyService = '';
+  formData.oneFiftyService = ''; 
+  formData.oneFiftyPlusService='';   
+}
+
   return(
     <div id="container">
       <button id='button-close1'>close</button>
       <h1>Get an Instant Quotation</h1>
+    {/*  {submitting &&
+        <div>
+          You are submitting the following:
+          <ul>
+            {Object.entries(formData).map(([name, value]) => (
+              <li key={name}><strong>{name}</strong>: {value.toString()}</li>
+            ))}
+          </ul>
+        </div>
+      } */}
       {submitting &&
         <div>
           You are submitting the following:
@@ -141,7 +173,7 @@ function resetResultValue() {
             ))}
           </ul>
         </div>
-      } 
+      }
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
@@ -214,10 +246,10 @@ function resetResultValue() {
             </select>
           </div>  
 
-          <div hidden={formData.compilationTxn !== 'onefiftyplus-txn'}>
+          <div hidden={formData.compilationTxn !== 'onefiftyplus-txn'}>          
             <label htmlFor="oneFiftyPlusService">Available services (optional)</label>
             <select name="oneFiftyPlusService" id="oneFiftyPlusService"
-            onChange={handleChange4} >
+            onChange={handleChange4}>
               <option value="" >Select your option</option>
               <option value="consulting-business3">Consulting business</option>
               <option value="holdings-company3">Holdings company</option>
