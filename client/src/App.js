@@ -24,8 +24,12 @@ function App() {
   }
 
   const handleChange1 = event =>  {
+    const div2 = document.getElementById('div2');
+    const div3 = document.getElementById('div3');
     const result = document.getElementById('result');
     resetResultValue();
+    div2.style.display = 'none';
+    div3.style.display = 'none';
     result.style.display = 'inline';  
     setFormData({
       name: event.target.name,
@@ -233,7 +237,7 @@ function calculate() {
   
     switch(service.value) {
       case 'incorporation & business accounts registration':
-        document.getElementById('div2').style.display = 'block';     
+        document.getElementById('div2').style.display = 'block';               
         result.value = '$800 - business trade name add $100';
         result.style.display = 'none'; 
         break;
