@@ -71,7 +71,7 @@ h1 {
 }
 
 /* hide selections */
-#div1, #div2, #div3, #compilation, #review-engagement, #audit-engagement, #fifty-txn, #onefifty-txn, #onefiftyplus-txn {
+#service2, #service3, #compilation, #review-engagement, #audit-engagement, #fifty-txn, #onefifty-txn, #onefiftyplus-txn {
   display: none;
   flex-direction: column;
 }
@@ -154,14 +154,14 @@ h1 {
     transition: all 0.3s;
   }
 
-  #div2, #div3 {
+  #service2, #service3 {
     width: 92%;
     padding: 0px 8px;
     color: black;
     background: #fff;
     border-radius: 5px;
   }
-  #div2 p, #div3 p {
+  #service2 p, #service3 p {
     margin: 5px 0;
   }
 
