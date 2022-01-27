@@ -71,7 +71,7 @@ h1 {
 }
 
 /* hide selections */
-#service2, #service3, #compilation, #review-engagement, #audit-engagement, #fifty-txn, #onefifty-txn, #onefiftyplus-txn {
+#service2, #service3 {
   display: none;
   flex-direction: column;
 }
