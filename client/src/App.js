@@ -16,29 +16,29 @@ function App() {
   const [submitting, setSubmitting] = useState(false);
   console.log('formData',formData)
   const handleSubmit = event => {
-    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+    // const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
     event.preventDefault();
     calculate(); 
     setSubmitting(true);      
-    console.log('handleSubmit oneFiftyPlusTxn.value',oneFiftyPlusTxn.value)
+    console.log('handleSubmit formData result', formData.result)
   }
 
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
     const result = document.getElementById('result');
-    resetResultValue();
+    // resetResultValue();
     service2.style.display = 'none';
     service3.style.display = 'none';
     result.style.display = 'inline';  
     setFormData({
       name: event.target.name,
       value: event.target.value,      
-    });   
+    });      
   } 
 
   const handleChange2 = event =>  {
-    resetResultValue();
+    // resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
@@ -47,8 +47,8 @@ function App() {
 
   const handleChange3 = (event) =>  {
     console.log('formData.oneFiftyPlusService1',formData.oneFiftyPlusService) 
-    resetServiceValues(); 
-    resetResultValue();    
+    // resetServiceValues(); 
+    // resetResultValue();    
     setFormData({      
       name: event.target.name,
       value: event.target.value,
@@ -57,7 +57,7 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
-    resetResultValue();
+    // resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
@@ -67,7 +67,7 @@ function App() {
 function resetResultValue() { 
   const result = document.getElementById('result');
   console.log('resetResultValue1',result.value);
-  result.value = '';  
+  // result.value = '';  
  
   console.log('resetResultValue2',result.value)
 }
@@ -87,11 +87,11 @@ const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
 // process quotation value 
 function calculate() { 
   // const service = document.getElementById('service');
-  const category = document.getElementById('category')
-  const compilation = document.getElementById('compilationTxn');
-  const fiftyTxn = document.getElementById('fiftyService');
-  const oneFiftyTxn = document.getElementById('oneFiftyService');  
-  const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
+  // const category = document.getElementById('category')
+  // const compilation = document.getElementById('compilationTxn');
+  // const fiftyTxn = document.getElementById('fiftyService');
+  // const oneFiftyTxn = document.getElementById('oneFiftyService');  
+  // const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
   const result = document.getElementById('result');
   
     switch(formData.service) {
@@ -112,85 +112,85 @@ function calculate() {
       default:
         break;  
     }
-    switch(compilation.value) {
+    switch(formData.compilationTxn) {
       case 'fifty-txn':
-        result.value = '$1500-$1800';
+        formData.result = '$1500-$1800';
         break;
       case 'onefifty-txn':
-        result.value = '$1800-$2500';
+        formData.result = '$1800-$2500';
         break;
       case 'onefiftyplus-txn':
-        result.value  = '$2500-$3500'; 
+        formData.result  = '$2500-$3500'; 
         break;
       default:
          break;  
     }
-    switch(category.value) {
+    switch(formData.category) {
       case 'review-engagement':
-        result.value = '$5500-$7500';
+        formData.result = '$5500-$7500';
         break;
       case 'audit-engagement':
-        result.value = '$9000-$12000';  
+        formData.result = '$9000-$12000';  
         break;
       default:
         break;  
     }
-    switch(fiftyTxn.value) {      
+    switch(formData.fiftyService) {      
       case 'consulting-business1':
-        result.value  = '$1500';  
+        formData.result  = '$1500';  
         break;
       case 'holdings-company1':
-        result.value = '$1700'; 
+        formData.result = '$1700'; 
         break;
       default:
         break;   
     }    
-    switch(oneFiftyTxn.value) {
+    switch(formData.oneFiftyService) {
       case 'consulting-business2':
-        result.value = '$1800';
+        formData.result = '$1800';
         break;
       case 'holdings-company2':
-        result.value = '$2000';
+        formData.result = '$2000';
         break;
       case 'trading-retail2':
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       case 'mortgage-insurance-broker2':
-        result.value = '$1800';
+        formData.result = '$1800';
         break;
       case 'home-renovation-contractor2':
-        result.value = '$2300';
+        formData.result = '$2300';
         break;
       case 'medical-professional-corporation2':
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       default:
         break;  
     }  
-    switch(oneFiftyPlusTxn.value) {
+    switch(formData.oneFiftyPlusService) {
       case 'consulting-business3':
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       case 'holdings-company3':
-        result.value = '$2700';
+        formData.result = '$2700';
         break;
       case 'trading-retail3':
-        result.value = '$3200'; 
+        formData.result = '$3200'; 
         break;
       case 'manufacturing3':
-        result.value = '$3500';
+        formData.result = '$3500';
         break;
       case 'restaurant3':
-        result.value = '$3500';
+        formData.result = '$3500';
         break;  
       case 'mortgage-insurance-broker3':        
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       case 'home-renovation-contractor3':
-        result.value = '$3000';
+        formData.result = '$3000';
         break;
       case 'medical-professional-corporation3':
-        result.value = '$3500';
+        formData.result = '$3500';
         break;
       default:
         break;    
@@ -316,7 +316,8 @@ function calculate() {
           <button type="submit" >Submit</button>
 
           <label htmlFor="result">Estimated cost of service</label>
-          <output name="result" type="text" id="result"></output> 
+          <output name="result" type="text" id="result"
+          value={formData.result}></output> 
           
           {/* Incorporation & business accounts registration */}
           <div id="service2">
