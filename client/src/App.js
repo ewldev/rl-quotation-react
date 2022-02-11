@@ -117,83 +117,83 @@ function calculate() {
     }
     switch(formData.compilationTxn) {
       case 'fifty-txn':
-        formData.result = '$1500-$1800';
+        result.value = '$1500-$1800';
         break;
       case 'onefifty-txn':
-        formData.result = '$1800-$2500';
+        result.value = '$1800-$2500';
         break;
       case 'onefiftyplus-txn':
-        formData.result  = '$2500-$3500'; 
+        result.value  = '$2500-$3500'; 
         break;
       default:
          break;  
     }
     switch(formData.category) {
       case 'review-engagement':
-        formData.result = '$5500-$7500';
+        result.value = '$5500-$7500';
         break;
       case 'audit-engagement':
-        formData.result = '$9000-$12000';  
+        result.value = '$9000-$12000';  
         break;
       default:
         break;  
     }
     switch(formData.fiftyService) {      
       case 'consulting-business1':
-        formData.result  = '$1500';  
+        result.value  = '$1500';  
         break;
       case 'holdings-company1':
-        formData.result = '$1700'; 
+        result.value = '$1700'; 
         break;
       default:
         break;   
     }    
     switch(formData.oneFiftyService) {
       case 'consulting-business2':
-        formData.result = '$1800';
+        result.value = '$1800';
         break;
       case 'holdings-company2':
-        formData.result = '$2000';
+        result.value = '$2000';
         break;
       case 'trading-retail2':
-        formData.result = '$2500';
+        result.value = '$2500';
         break;
       case 'mortgage-insurance-broker2':
-        formData.result = '$1800';
+        result.value = '$1800';
         break;
       case 'home-renovation-contractor2':
-        formData.result = '$2300';
+        result.value = '$2300';
         break;
       case 'medical-professional-corporation2':
-        formData.result = '$2500';
+        result.value = '$2500';
         break;
       default:
         break;  
     }  
     switch(formData.oneFiftyPlusService) {
       case 'consulting-business3':
-        formData.result = '$2500';
+        result.value = '$2500';
         break;
       case 'holdings-company3':
-        formData.result = '$2700';
+        result.value = '$2700';
         break;
       case 'trading-retail3':
-        formData.result = '$3200'; 
+        result.value = '$3200'; 
         break;
       case 'manufacturing3':
-        formData.result = '$3500';
+        result.value = '$3500';
         break;
       case 'restaurant3':
-        formData.result = '$3500';
+        result.value = '$3500';
         break;  
       case 'mortgage-insurance-broker3':        
-        formData.result = '$2500';
+        result.value = '$2500';
         break;
       case 'home-renovation-contractor3':
-        formData.result = '$3000';
+        result.value = '$3000';
         break;
       case 'medical-professional-corporation3':
-        formData.result = '$3500';
+        result.value = '$3500';
         break;
       default:
         break;    
