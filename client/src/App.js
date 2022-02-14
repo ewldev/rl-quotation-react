@@ -18,7 +18,6 @@ function App() {
  
   const handleSubmit = event => {
     event.preventDefault();
-    // resetResultValue1();
     calculate(); 
     setSubmitting(true);      
   }
@@ -99,9 +98,12 @@ function App() {
 
   function resetResultValue() { 
     const result = document.getElementById('result');
-    console.log('resetResultValue2',result.value);
-    result.value = '';  
-    console.log('resetResultValue2',result.value)
+    console.log('resetResultValue1',result.value);
+    result.value = ''; 
+    console.log('resetResultValue1',result.value); 
+    console.log('resetResultValue2',formData.result);    
+    formData.result = '';
+    console.log('resetResultValue2',formData.result);
   }
 
 // process quotation value 
