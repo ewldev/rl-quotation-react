@@ -29,25 +29,25 @@ function App() {
     const result = document.getElementById('result');
     service2.style.display = 'none';
     service3.style.display = 'none';
-    result.style.display = 'inline';  
-    setFormData({
-      name: event.target.name,
-      value: event.target.value,      
-    });
+    result.style.display = 'inline';      
     resetCategory();  
     resetTransactions();
     resetServiceValues();
-    resetResultValue();  
+    resetResultValue(); 
+    setFormData({
+      name: event.target.name,
+      value: event.target.value,      
+    }); 
   }  
 
   const handleChange2 = event =>  {
+    resetTransactions();
+    resetServiceValues();
+    resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });
-    resetTransactions();
-    resetServiceValues();
-    resetResultValue();        
+    });        
   } 
 
   const handleChange3 = event =>  {
