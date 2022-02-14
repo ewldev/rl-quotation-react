@@ -21,7 +21,6 @@ function App() {
     // resetResultValue1();
     calculate(); 
     setSubmitting(true);      
-    console.log('handleSubmit formData result', formData.result)
   }
 
   const handleChange1 = event =>  {
@@ -35,21 +34,23 @@ function App() {
       name: event.target.name,
       value: event.target.value,      
     });
-    // resetCategory();  
-    // resetTransactions();
+    resetCategory();  
+    resetTransactions();
     resetServiceValues();
     resetResultValue();  
   }  
 
   const handleChange2 = event =>  {
-    resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });        
+    });
+    resetTransactions();
+    resetServiceValues();
+    resetResultValue();        
   } 
 
-  const handleChange3 = (event) =>  {
+  const handleChange3 = event =>  {
     resetServiceValues(); 
     resetResultValue();    
     setFormData({      
@@ -66,13 +67,34 @@ function App() {
     });    
   } 
 
+  function resetCategory() {
+    const category = document.getElementById('category');
+    category.value = '';
+    formData.category = '';
+  }
+
+  function resetTransactions() {
+    const compilation = document.getElementById('compilationTxn');
+    const reviewEgmt = document.getElementById('reviewTxn');
+    const auditEgmt = document.getElementById('auditTxn');
+    compilation.value = '';
+    reviewEgmt.value = '';
+    auditEgmt.value = '';  
+    formData.compilationTxn = '';
+    formData.reviewTxn = '';
+    formData.auditTxn = '';  
+  }
+
   function resetServiceValues() {
     const fiftyTxn = document.getElementById('fiftyService');
     const oneFiftyTxn = document.getElementById('oneFiftyService');  
     const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
     fiftyTxn.value = '';
     oneFiftyTxn.value = ''; 
-    oneFiftyPlusTxn.value = '';    
+    oneFiftyPlusTxn.value = '';   
+    formData.fiftyService = '';
+    formData.oneFiftyService = ''; 
+    formData.oneFiftyPlusService = '';     
   }
 
   function resetResultValue() { 
@@ -314,9 +336,8 @@ function calculate() {
           <button type="submit" >Submit</button>
 
           <label htmlFor="result">Estimated cost of service</label>
-          <output name="result" id="result">
-          {formData.result}
-          </output> 
+          <output name="result" id="result">  
+          </output>          
           
           {/* Incorporation & business accounts registration */}
           <div id="service2">
