@@ -3,6 +3,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
+  console.log('state, event', state, event)
   return {
       ...state,
       [event.name]: event.value,      
@@ -12,7 +13,9 @@ const formReducer = (state, event) => {
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
+  
   console.log('formData',formData)
+ 
   const handleSubmit = event => {
     event.preventDefault();
     // resetResultValue1();
@@ -25,19 +28,21 @@ function App() {
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
     const result = document.getElementById('result');
-    // resetResultValue2();
     service2.style.display = 'none';
     service3.style.display = 'none';
     result.style.display = 'inline';  
     setFormData({
       name: event.target.name,
       value: event.target.value,      
-    });  
-    resetResultValue1();    
-  } 
+    });
+    // resetCategory();  
+    // resetTransactions();
+    resetServiceValues();
+    resetResultValue();  
+  }  
 
   const handleChange2 = event =>  {
-    resetResultValue2();
+    resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
@@ -46,7 +51,7 @@ function App() {
 
   const handleChange3 = (event) =>  {
     resetServiceValues(); 
-    resetResultValue2();    
+    resetResultValue();    
     setFormData({      
       name: event.target.name,
       value: event.target.value,
@@ -54,38 +59,28 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
-    resetResultValue2();
+    resetResultValue();
     setFormData({
       name: event.target.name,
       value: event.target.value
     });    
   } 
 
-function resetResultValue1() { 
-    console.log('resetResultValue1',formData.result);
-    // formData.result = '';
-    console.log('resetResultValue1',formData.result)
-}  
+  function resetServiceValues() {
+    const fiftyTxn = document.getElementById('fiftyService');
+    const oneFiftyTxn = document.getElementById('oneFiftyService');  
+    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
+    fiftyTxn.value = '';
+    oneFiftyTxn.value = ''; 
+    oneFiftyPlusTxn.value = '';    
+  }
 
-function resetResultValue2() { 
-  const result = document.getElementById('result');
-  console.log('resetResultValue2',result.value);
-  // result.value = '';  
-  // formData.result = '';
-  console.log('resetResultValue2',result.value)
-}
-
-function resetServiceValues() {
-//   const fiftyTxn = document.getElementById('fiftyService');
-// const oneFiftyTxn = document.getElementById('oneFiftyService');  
-// const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
-//   fiftyTxn.value = '';
-//   oneFiftyTxn.value = ''; 
-//   oneFiftyPlusTxn.value = ''; 
-  formData.fiftyService = '';
-  formData.oneFiftyService = ''; 
-  formData.oneFiftyPlusService='';   
-}
+  function resetResultValue() { 
+    const result = document.getElementById('result');
+    console.log('resetResultValue2',result.value);
+    result.value = '';  
+    console.log('resetResultValue2',result.value)
+  }
 
 // process quotation value 
 function calculate() { 
