@@ -17,8 +17,11 @@ function App() {
   console.log('formData',formData)
  
   const handleSubmit = event => {
+    console.log('handleSubmit formData.result',formData.result) 
     event.preventDefault();
-    calculate(); 
+    calculate(event); 
+    console.log('handleSubmit formData.result',formData.result)  
+            
     setSubmitting(true);      
   }
 
@@ -51,11 +54,12 @@ function App() {
 
   const handleChange3 = event =>  {
     resetServiceValues(); 
-    resetResultValue();    
+    resetResultValue();     
     setFormData({      
       name: event.target.name,
       value: event.target.value,
-    });    
+    });   
+   
   } 
 
   const handleChange4 = event =>  {
@@ -63,7 +67,8 @@ function App() {
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });    
+    }); 
+    console.log('handleChange4 event',event)   
   } 
 
   function resetCategory() {
@@ -99,7 +104,7 @@ function App() {
   function resetResultValue() { 
     const result = document.getElementById('result');
     console.log('resetResultValue1',result.value);
-    result.value = ''; 
+    // result.value = ''; 
     console.log('resetResultValue1',result.value); 
     console.log('resetResultValue2',formData.result);    
     formData.result = '';
@@ -115,7 +120,7 @@ function calculate() {
   // const oneFiftyTxn = document.getElementById('oneFiftyService');  
   // const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
   const result = document.getElementById('result');
-  
+ 
     switch(formData.service) {
       case 'incorporation & business accounts registration':
         document.getElementById('service2').style.display = 'block';               
@@ -136,83 +141,90 @@ function calculate() {
     }
     switch(formData.compilationTxn) {
       case 'fifty-txn':
-        result.value = '$1500-$1800';
+        setFormData({
+          name: 'result',
+          value: '$1500-$1800'
+        });        
         break;
       case 'onefifty-txn':
-        result.value = '$1800-$2500';
+        formData.result = '$1800-$2500';
         break;
       case 'onefiftyplus-txn':
-        result.value  = '$2500-$3500'; 
+        formData.result  = '$2500-$3500'; 
         break;
       default:
-         break;  
+        break;
     }
     switch(formData.category) {
       case 'review-engagement':
-        result.value = '$5500-$7500';
+        formData.result = '$5500-$7500';
         break;
       case 'audit-engagement':
-        result.value = '$9000-$12000';  
+        formData.result = '$9000-$12000';  
         break;
       default:
         break;  
     }
     switch(formData.fiftyService) {      
       case 'consulting-business1':
-        result.value  = '$1500';  
+        formData.result  = '$1500';  
         break;
       case 'holdings-company1':
-        result.value = '$1700'; 
+        formData.result = '$1700'; 
         break;
       default:
         break;   
     }    
     switch(formData.oneFiftyService) {
       case 'consulting-business2':
-        result.value = '$1800';
+        formData.result = '$1800';
         break;
       case 'holdings-company2':
-        result.value = '$2000';
+        formData.result = '$2000';
         break;
       case 'trading-retail2':
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       case 'mortgage-insurance-broker2':
-        result.value = '$1800';
+        formData.result = '$1800';
         break;
       case 'home-renovation-contractor2':
-        result.value = '$2300';
+        formData.result = '$2300';
         break;
       case 'medical-professional-corporation2':
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       default:
         break;  
     }  
     switch(formData.oneFiftyPlusService) {
       case 'consulting-business3':
-        result.value = '$2500';
+        setFormData({
+          name: 'result',
+          value: '$2500'
+        });   
         break;
       case 'holdings-company3':
-        result.value = '$2700';
+        formData.result = '$2700';
         break;
       case 'trading-retail3':
-        result.value = '$3200'; 
+        formData.result = '$3200'; 
         break;
       case 'manufacturing3':
-        result.value = '$3500';
+        formData.result = '$3500';
         break;
       case 'restaurant3':
-        result.value = '$3500';
+        formData.result = '$3500';
         break;  
       case 'mortgage-insurance-broker3':        
-        result.value = '$2500';
+        formData.result = '$2500';
         break;
       case 'home-renovation-contractor3':
-        result.value = '$3000';
+        formData.result = '$3000';
         break;
       case 'medical-professional-corporation3':
-        result.value = '$3500';
+          
+      formData.result = '$3500';
         break;
       default:
         break;    
@@ -243,7 +255,7 @@ function calculate() {
             ))}
           </ul>
         </div>
-      }
+      }        
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
@@ -339,6 +351,7 @@ function calculate() {
 
           <label htmlFor="result">Estimated cost of service</label>
           <output name="result" id="result">  
+          {formData.result}
           </output>          
           
           {/* Incorporation & business accounts registration */}
