@@ -4,6 +4,7 @@
   "description": "node-sendgrid server for rl-quotation system",
   "main": "server.js",
   "scripts": {
+    "watch": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
