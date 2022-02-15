@@ -118,9 +118,7 @@ h1 {
     /* filter: brightness(200%); */
     color: rgb(31, 28, 28);
     background: orange;
-  }
-
-  
+  }  
   
  #form input {
     width: 100%;
@@ -153,9 +151,9 @@ h1 {
     box-sizing: border-box;
     transition: all 0.3s;
   }
-
+  
   #service2, #service3 {
-    width: 92%;
+    width: 80%;
     padding: 0px 8px;
     color: black;
     background: #fff;
@@ -164,15 +162,15 @@ h1 {
   #service2 p, #service3 p {
     margin: 5px 0;
   }
-
-  .message-container {
+  
+  /* .message-container {
     border-radius: 5px;
     width: 90%;
     margin-top: 40px;
     display: flex;
     justify-content: center;
     color: black;
-  } 
+  }  */
   
   #button-close2 {
     cursor: pointer;

@@ -395,13 +395,13 @@ function calculate() {
 
           {/*Personal tax preparation*/}
           <div id="service3">
-            <p>standard $150 <br></br>
-               capital gain/loss add $100  <br></br>
-               self-employed business add $250 <br></br>
-               foreign property declaration add $150 </p>    
-          </div>           
-
-      </form>
+          <p>standard $150 <br></br>
+            capital gain/loss add $100  <br></br>
+            self-employed business add $250 <br></br>
+            foreign property declaration add $150 </p>    
+          </div> 
+      
+      </form>      
 
       <button id='button-close2'>back to our site</button>
 
