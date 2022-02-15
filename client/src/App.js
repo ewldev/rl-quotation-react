@@ -1,5 +1,4 @@
 import React, { useReducer, useState } from 'react';
-// import React, { useReducer } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
@@ -76,34 +75,18 @@ function App() {
   }
 
   function resetTransactions() {
-    const compilation = document.getElementById('compilationTxn');
-    const reviewEgmt = document.getElementById('reviewTxn');
-    const auditEgmt = document.getElementById('auditTxn');
-    compilation.value = '';
-    reviewEgmt.value = '';
-    auditEgmt.value = '';  
     formData.compilationTxn = '';
     formData.reviewTxn = '';
     formData.auditTxn = '';  
   }
 
   function resetServiceValues() {
-    const fiftyTxn = document.getElementById('fiftyService');
-    const oneFiftyTxn = document.getElementById('oneFiftyService');  
-    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');
-    fiftyTxn.value = '';
-    oneFiftyTxn.value = ''; 
-    oneFiftyPlusTxn.value = '';   
     formData.fiftyService = '';
     formData.oneFiftyService = ''; 
     formData.oneFiftyPlusService = '';     
   }
 
   function resetResultValue() { 
-    const result = document.getElementById('result');
-    console.log('resetResultValue1',result.value);
-    // result.value = ''; 
-    console.log('resetResultValue1',result.value); 
     console.log('resetResultValue2',formData.result);    
     formData.result = '';
     console.log('resetResultValue2',formData.result);
@@ -111,12 +94,6 @@ function App() {
 
 // process quotation value 
 function calculate() { 
-  // const service = document.getElementById('service');
-  // const category = document.getElementById('category')
-  // const compilation = document.getElementById('compilationTxn');
-  // const fiftyTxn = document.getElementById('fiftyService');
-  // const oneFiftyTxn = document.getElementById('oneFiftyService');  
-  // const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService'); 
   const result = document.getElementById('result');
  
     switch(formData.service) {
