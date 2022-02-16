@@ -13,35 +13,40 @@ function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   
-  console.log('formData',formData)
+  console.log('formData1',formData)
+
+  
  
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     console.log('handleSubmit formData.result',formData.result) 
     event.preventDefault();
-    calculate(event); 
-    console.log('handleSubmit formData.result',formData.result) 
+    calculate(formData);
    
-    // access sendgrid api
+  // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
-    fetch('http://localhost:8080/sendmail',{
-    method: 'post',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      service: formData.service,
-      category: formData.category,
-      compilationTxn: formData.compilationTxn,
-      fiftyService: formData.fiftyService,
-      oneFiftyService: formData.oneFiftyService,
-      oneFiftyPlusService: formData.oneFiftyPlusService,
-      result: formData.result,
-      // email: email.value
-     })  
-  })      
-  .then(response => response.json())    
-  .catch(err => console.log(err))      
+   fetch('http://localhost:8080/sendmail',{
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          service: formData.service,
+          category: formData.category,
+          compilationTxn: formData.compilationTxn,
+          fiftyService: formData.fiftyService,
+          oneFiftyService: formData.oneFiftyService,
+          oneFiftyPlusService: formData.oneFiftyPlusService,
+          result: formData.result,
+          // email: email.value
+         })  
+      })      
+      .then(response => response.json())    
+      .catch(err => console.log(err))      
+   
+  setSubmitting(true); 
+  submitting && console.log('formData2',formData) 
+     
+  }        
+          
   
-  setSubmitting(true);    
-  }
 
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
@@ -58,6 +63,7 @@ function App() {
       name: event.target.name,
       value: event.target.value,      
     }); 
+    
   }  
 
   const handleChange2 = event =>  {
@@ -67,12 +73,12 @@ function App() {
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });        
+    });    
   } 
 
   const handleChange3 = event =>  {
     resetServiceValues(); 
-    resetResultValue();     
+    resetResultValue();   
     setFormData({      
       name: event.target.name,
       value: event.target.value,
@@ -84,7 +90,8 @@ function App() {
     setFormData({
       name: event.target.name,
       value: event.target.value
-    });    
+    });  
+    
   } 
 
   function resetCategory() {
@@ -112,7 +119,7 @@ function App() {
   }
 
 // process quotation value 
-function calculate() { 
+function calculate(formData) { 
   const result = document.getElementById('result');
  
     switch(formData.service) {
@@ -278,9 +285,9 @@ function calculate() {
           value: '$3500'
         });             
         break;
-      default:
-        break;    
-    }    
+      default: 
+        break;           
+    }   
   }  
 
 
