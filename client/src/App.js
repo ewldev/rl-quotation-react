@@ -19,9 +19,28 @@ function App() {
     console.log('handleSubmit formData.result',formData.result) 
     event.preventDefault();
     calculate(event); 
-    console.log('handleSubmit formData.result',formData.result)  
-            
-    setSubmitting(true);      
+    console.log('handleSubmit formData.result',formData.result) 
+   
+    // access sendgrid api
+  // fetch('https://rl-quotation.herokuapp.com/sendmail',{
+    fetch('http://localhost:8080/sendmail',{
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      service: formData.service,
+      category: formData.category,
+      compilationTxn: formData.compilationTxn,
+      fiftyService: formData.fiftyService,
+      oneFiftyService: formData.oneFiftyService,
+      oneFiftyPlusService: formData.oneFiftyPlusService,
+      result: formData.result,
+      // email: email.value
+     })  
+  })      
+  .then(response => response.json())    
+  .catch(err => console.log(err))      
+  
+  setSubmitting(true);    
   }
 
   const handleChange1 = event =>  {
@@ -69,15 +88,15 @@ function App() {
   } 
 
   function resetCategory() {
-    const category = document.getElementById('category');
-    category.value = '';
+    // const category = document.getElementById('category');
+    // category.value = '';
     formData.category = '';
   }
 
   function resetTransactions() {
     formData.compilationTxn = '';
-    formData.reviewTxn = '';
-    formData.auditTxn = '';  
+    // formData.reviewTxn = '';
+    // formData.auditTxn = '';  
   }
 
   function resetServiceValues() {
