@@ -24,29 +24,46 @@ function App() {
    
   // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
-   fetch('http://localhost:8080/sendmail',{
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          service: formData.service,
-          category: formData.category,
-          compilationTxn: formData.compilationTxn,
-          fiftyService: formData.fiftyService,
-          oneFiftyService: formData.oneFiftyService,
-          oneFiftyPlusService: formData.oneFiftyPlusService,
-          result: formData.result,
-          // email: email.value
-         })  
-      })      
-      .then(response => response.json())    
-      .catch(err => console.log(err))      
-   
+  //  fetch('http://localhost:8080/sendmail',{
+  //       method: 'post',
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: JSON.stringify({
+  //         service: formData.service,
+  //         category: formData.category,
+  //         compilationTxn: formData.compilationTxn,
+  //         fiftyService: formData.fiftyService,
+  //         oneFiftyService: formData.oneFiftyService,
+  //         oneFiftyPlusService: formData.oneFiftyPlusService,
+  //         result: formData.result,
+  //         // email: email.value
+  //        })  
+  //     })      
+  //     .then(response => response.json())    
+  //     .catch(err => console.log(err))      
+   submit();
   setSubmitting(true); 
   submitting && console.log('formData2',formData) 
      
   }        
           
-  
+  async function submit () {
+    await  fetch('http://localhost:8080/sendmail',{
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        service: formData.service,
+        category: formData.category,
+        compilationTxn: formData.compilationTxn,
+        fiftyService: formData.fiftyService,
+        oneFiftyService: formData.oneFiftyService,
+        oneFiftyPlusService: formData.oneFiftyPlusService,
+        result: formData.result,
+        email: formData.email
+       })  
+    })      
+    .then(response => response.json())    
+    .catch(err => console.log(err))      
+  }
 
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
@@ -91,8 +108,15 @@ function App() {
       name: event.target.name,
       value: event.target.value
     });  
-    
-  } 
+  }
+
+  const emailInput = event => {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value
+    });  
+  }  
+   
 
   function resetCategory() {
     // const category = document.getElementById('category');
@@ -404,7 +428,7 @@ function calculate(formData) {
           </div>           
 
           <label htmlFor="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="email@address.com" />         
+          <input type="email" id="email" name="email" placeholder="email@address.com" onInput={emailInput}/>         
           
           <button type="submit" >Submit</button>
 
