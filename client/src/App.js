@@ -24,47 +24,28 @@ function App() {
    
   // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
-  //  fetch('http://localhost:8080/sendmail',{
-  //       method: 'post',
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: JSON.stringify({
-  //         service: formData.service,
-  //         category: formData.category,
-  //         compilationTxn: formData.compilationTxn,
-  //         fiftyService: formData.fiftyService,
-  //         oneFiftyService: formData.oneFiftyService,
-  //         oneFiftyPlusService: formData.oneFiftyPlusService,
-  //         result: formData.result,
-  //         // email: email.value
-  //        })  
-  //     })      
-  //     .then(response => response.json())    
-  //     .catch(err => console.log(err))      
-   submit();
+   fetch('http://localhost:8080/sendmail',{
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          service: formData.service,
+          category: formData.category,
+          compilationTxn: formData.compilationTxn,
+          fiftyService: formData.fiftyService,
+          oneFiftyService: formData.oneFiftyService,
+          oneFiftyPlusService: formData.oneFiftyPlusService,
+          result: formData.result,
+          email: formData.email
+         })  
+      })      
+      .then(response => response.json())    
+      .catch(err => console.log(err))      
+  
   setSubmitting(true); 
   submitting && console.log('formData2',formData) 
      
   }        
-          
-  async function submit () {
-    await  fetch('http://localhost:8080/sendmail',{
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        service: formData.service,
-        category: formData.category,
-        compilationTxn: formData.compilationTxn,
-        fiftyService: formData.fiftyService,
-        oneFiftyService: formData.oneFiftyService,
-        oneFiftyPlusService: formData.oneFiftyPlusService,
-        result: formData.result,
-        email: formData.email
-       })  
-    })      
-    .then(response => response.json())    
-    .catch(err => console.log(err))      
-  }
-
+    
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
@@ -119,18 +100,24 @@ function App() {
    
 
   function resetCategory() {
-    // const category = document.getElementById('category');
-    // category.value = '';
+    const category = document.getElementById('category');
+    category.value = '';
     formData.category = '';
   }
 
   function resetTransactions() {
+    const compilation = document.getElementById('compilationTxn');
+    compilation.value = '';
     formData.compilationTxn = '';
-    // formData.reviewTxn = '';
-    // formData.auditTxn = '';  
   }
 
   function resetServiceValues() {
+    const fiftyTxn = document.getElementById('fiftyService');
+    const oneFiftyTxn = document.getElementById('oneFiftyService');  
+    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');   
+    fiftyTxn.value = '';
+    oneFiftyTxn.value = ''; 
+    oneFiftyPlusTxn.value = '';   
     formData.fiftyService = '';
     formData.oneFiftyService = ''; 
     formData.oneFiftyPlusService = '';     
