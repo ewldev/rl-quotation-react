@@ -20,18 +20,13 @@ function App() {
     event.preventDefault();
     
     const doCalculate = async () => {
-      const calculated = await calculate1(formData);
-      
+      const calculated = await calculate1(formData);      
       console.log ('calculated',calculated)
-    }
-
-   
+    }   
     
     doCalculate(formData);
     console.log('handleSubmit formData2',formData) 
-
-
-
+   
   // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
    fetch('http://localhost:8080/sendmail',{
@@ -54,11 +49,25 @@ function App() {
   setSubmitting(true);        
   }        
     
+  // function calculate1(formData) {
+  //   console.log('calculate1 formData',formData)
+  //   formData.result = '1500';
+  //   return formData.result;
+  // }
+
   function calculate1(formData) {
     console.log('calculate1 formData',formData)
-    formData.result = '1500';
-    return formData.result;
-  }
+  switch(formData.fiftyService) {      
+    case 'consulting-business1':
+      formData.result = '$1500';
+      return formData.result;
+    case 'holdings-company1':
+      formData.result = '$1700';
+      return formData.result;
+    default:
+     break
+  }    
+}
 
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
