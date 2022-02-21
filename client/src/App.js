@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
-  console.log('state, event', state, event)
+  console.log('reducer state, event', state, event)
   return {
       ...state,
       [event.name]: event.value,      
@@ -13,15 +13,25 @@ function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   
-  console.log('formData1',formData)
-
-  
+  console.log('App formData',formData)   
  
   const handleSubmit = (event) => {
-    console.log('handleSubmit formData.result',formData.result) 
+    console.log('handleSubmit formData1',formData) 
     event.preventDefault();
-    calculate(formData);
+    
+    const doCalculate = async () => {
+      const calculated = await calculate1(formData);
+      
+      console.log ('calculated',calculated)
+    }
+
    
+    
+    doCalculate(formData);
+    console.log('handleSubmit formData2',formData) 
+
+
+
   // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
    fetch('http://localhost:8080/sendmail',{
@@ -41,11 +51,15 @@ function App() {
       .then(response => response.json())    
       .catch(err => console.log(err))      
   
-  setSubmitting(true); 
-  submitting && console.log('formData2',formData) 
-     
+  setSubmitting(true);        
   }        
     
+  function calculate1(formData) {
+    console.log('calculate1 formData',formData)
+    formData.result = '1500';
+    return formData.result;
+  }
+
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
@@ -84,6 +98,7 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
+    console.log('handleChange4 event',event.target.name, event.target.value)   
     resetResultValue();
     setFormData({
       name: event.target.name,
