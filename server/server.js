@@ -9,7 +9,7 @@ const app = express();
 const sendMail = require('./sendMail');
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://rl-quotation-frontend.herokuapp.com',
   }));
 
 app.use(express.json());
