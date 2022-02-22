@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
-  console.log('state, event', state, event)
+  console.log('reducer state, event', state, event)
   return {
       ...state,
       [event.name]: event.value,      
@@ -13,9 +13,7 @@ function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   
-  console.log('formData1',formData)
-
-  
+  console.log('App formData',formData)   
  
   const handleSubmit = (event) => {
     console.log('handleSubmit formData.result',formData.result) 
@@ -42,8 +40,6 @@ function App() {
       .catch(err => console.log(err))      
   
   setSubmitting(true); 
-  submitting && console.log('formData2',formData) 
-     
   }        
     
   const handleChange1 = event =>  {
@@ -84,6 +80,7 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
+    console.log('handleChange4 event1',event.target.name, event.target.value)   
     resetResultValue();
     setFormData({
       name: event.target.name,
@@ -124,7 +121,7 @@ function App() {
   }
 
   function resetResultValue() { 
-    console.log('resetResultValue2',formData.result);    
+    console.log('resetResultValue1',formData.result);    
     formData.result = '';
     console.log('resetResultValue2',formData.result);
   }
