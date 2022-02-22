@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
-  console.log('reducer state, event', state, event)
+  console.log('state, event', state, event)
   return {
       ...state,
       [event.name]: event.value,      
@@ -13,19 +13,14 @@ function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
   
-  console.log('App formData',formData)   
+  console.log('formData1',formData)
+
+  
  
   const handleSubmit = (event) => {
-    console.log('handleSubmit formData1',formData) 
+    console.log('handleSubmit formData.result',formData.result) 
     event.preventDefault();
-    
-    const doCalculate = async () => {
-      const calculated = await calculate1(formData);      
-      console.log ('calculated',calculated)
-    }   
-    
-    doCalculate(formData);
-    console.log('handleSubmit formData2',formData) 
+    calculate(formData);
    
   // access sendgrid api
   // fetch('https://rl-quotation.herokuapp.com/sendmail',{
@@ -46,29 +41,11 @@ function App() {
       .then(response => response.json())    
       .catch(err => console.log(err))      
   
-  setSubmitting(true);        
+  setSubmitting(true); 
+  submitting && console.log('formData2',formData) 
+     
   }        
     
-  // function calculate1(formData) {
-  //   console.log('calculate1 formData',formData)
-  //   formData.result = '1500';
-  //   return formData.result;
-  // }
-
-  function calculate1(formData) {
-    console.log('calculate1 formData',formData)
-  switch(formData.fiftyService) {      
-    case 'consulting-business1':
-      formData.result = '$1500';
-      return formData.result;
-    case 'holdings-company1':
-      formData.result = '$1700';
-      return formData.result;
-    default:
-     break
-  }    
-}
-
   const handleChange1 = event =>  {
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
@@ -107,7 +84,6 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
-    console.log('handleChange4 event',event.target.name, event.target.value)   
     resetResultValue();
     setFormData({
       name: event.target.name,
@@ -163,7 +139,8 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$800 - business trade name add $100'
-        });                      
+        });       
+        formData.result = '$800 - business trade name add $100';
         result.style.display = 'none'; 
         break;
       case 'personal tax preparation':
@@ -171,7 +148,8 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: 'standard $150 - capital gain/loss add $100 - self-employed business add $250 - foreign property declaration add $150'
-        });        
+        });  
+        formData.result = 'standard $150 - capital gain/loss add $100 - self-employed business add $250 - foreign property declaration add $150';      
         result.style.display = 'none'; 
         break;
       default:
@@ -182,19 +160,22 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$1500-$1800'
-        });        
+        });  
+        formData.result = '$1500-$1800'      
         break;
       case 'onefifty-txn':
         setFormData({
           name: 'result',
           value: '$1800-$2500'
         });  
+        formData.result = '$1800-$2500'      
         break;
       case 'onefiftyplus-txn':
         setFormData({
           name: 'result',
           value: '$2500-$3500'
-        });  
+        });
+        formData.result = '$2500-$3500'     
         break;
       default:
         break;
@@ -204,13 +185,15 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$5500-$7500'
-        });  
+        }); 
+        formData.result = '$5500-$7500'; 
         break;
       case 'audit-engagement':
         setFormData({
           name: 'result',
           value: '$9000-$12000'
         });  
+        formData.result = '$9000-$12000'; 
         break;
       default:
         break;  
@@ -220,13 +203,15 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$1500'
-        });  
+        }); 
+        formData.result = '$1500'
         break;
       case 'holdings-company1':
         setFormData({
           name: 'result',
           value: '$1700'
-        });  
+        }); 
+        formData.result = '$1700' 
         break;
       default:
         break;   
@@ -236,37 +221,43 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$1800'
-        });  
+        }); 
+        formData.result = '$1800'  
         break;
       case 'holdings-company2':
         setFormData({
           name: 'result',
           value: '$2000'
-        });  
+        }); 
+        formData.result = '$2000'  
         break;
       case 'trading-retail2':
         setFormData({
           name: 'result',
           value: '$2500'
         });  
+        formData.result = '$2500' 
         break;
       case 'mortgage-insurance-broker2':
         setFormData({
           name: 'result',
           value: '$1800'
         });  
+        formData.result = '$1800' 
         break;
       case 'home-renovation-contractor2':
         setFormData({
           name: 'result',
           value: '$2300'
         });  
+        formData.result = '$2300' 
         break;
       case 'medical-professional-corporation2':
         setFormData({
           name: 'result',
           value: '$2500'
-        });  
+        }); 
+        formData.result = '$2500'  
         break;
       default:
         break;  
@@ -276,55 +267,62 @@ function calculate(formData) {
         setFormData({
           name: 'result',
           value: '$2500'
-        });   
+        });
+        formData.result = '$2500'    
         break;
       case 'holdings-company3':
         setFormData({
           name: 'result',
           value: '$2700'
         });   
+        formData.result = '$2700' 
         break;
       case 'trading-retail3':
         setFormData({
           name: 'result',
           value: '$3200'
-        });   
+        }); 
+        formData.result = '$3200'   
         break;
       case 'manufacturing3':
         setFormData({
           name: 'result',
           value: '$3500'
         });   
+        formData.result = '$3500' 
         break;
       case 'restaurant3':
         setFormData({
           name: 'result',
           value: '$3500'
-        });   
+        }); 
+        formData.result = '$3500'   
         break;  
       case 'mortgage-insurance-broker3':  
         setFormData({
           name: 'result',
           value: '$2500'
-        });         
+        }); 
+        formData.result = '$2500'         
         break;
       case 'home-renovation-contractor3':
         setFormData({
           name: 'result',
           value: '$3000'
-        });         
-        break;
+        });  
+        formData.result = '$3000'        
+        break;       
       case 'medical-professional-corporation3':
         setFormData({
           name: 'result',
           value: '$3500'
-        });             
+        });   
+        formData.result = '$3500'           
         break;
       default: 
         break;           
     }   
   }  
-
 
   return(
     <div id="container">
