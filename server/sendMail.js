@@ -24,22 +24,22 @@ const sendMail = (req, res) => {
     `;
 
     console.log('output',output)
-    // const msg = {
-    //     to,
-    //     from,
-    //     subject,
-    //     html: output,
-    // }
+    const msg = {
+        to,
+        from,
+        subject,
+        html: output,
+    }
 
     // sgMail.sendMultiple(msg, function (err, result) {
-    //     sgMail.send(msg, function (err, result) {   
-    //     if (err) {
-    //         res.status(400).json('Email Not Sent');
-    //     } else {
-    //         console.log("Email was sent");
-    //         res.json(output);
-    //     }
-    // });    
+        sgMail.send(msg, function (err, result) {   
+        if (err) {
+            res.status(400).json('Email Not Sent');
+        } else {
+            console.log("Email was sent");
+            res.json(output);
+        }
+    });    
 };
 
 module.exports = sendMail;
