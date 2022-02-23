@@ -2,7 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "description": "node-sendgrid server for rl-quotation system",
-  "main": "server.js",
   "engines": {
     "node": "16.x"
   },
