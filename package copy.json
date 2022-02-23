@@ -3,19 +3,11 @@
   "version": "1.0.0",
   "description": "node-sendgrid server for rl-quotation system",
   "main": "server.js",
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
     "watch": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "cd client/ && npm install && npm run build"
+    "start": "node server.js"
   },
-  "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
-  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
