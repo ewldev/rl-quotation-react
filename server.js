@@ -18,7 +18,7 @@ app.use(express.json());
 // app.use('/public', express.static(path.join(__dirname, 'public')))
 
  // Priority serve any static files.
- app.use(express.static(path.resolve(__dirname, './client/build')));
+//  app.use(express.static(path.resolve(__dirname, './client/build')));
 
 // app.get('/', (req, res)=> {res.send("LOOK ITS WORKING!!!") })
 

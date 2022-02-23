@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
+// import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {  
@@ -11,7 +12,7 @@ const formReducer = (state, event) => {
   
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
-  const [submitting, setSubmitting] = useState(false);
+  // const [submitting, setSubmitting] = useState(false);
   
   console.log('App formData',formData)   
  
@@ -39,7 +40,7 @@ function App() {
       .then(response => response.json())    
       .catch(err => console.log(err))      
   
-  setSubmitting(true); 
+  // setSubmitting(true); 
   }        
     
   const handleChange1 = event =>  {
@@ -56,8 +57,7 @@ function App() {
     setFormData({
       name: event.target.name,
       value: event.target.value,      
-    }); 
-    
+    });     
   }  
 
   const handleChange2 = event =>  {
@@ -94,8 +94,7 @@ function App() {
       value: event.target.value
     });  
   }  
-   
-
+  
   function resetCategory() {
     const category = document.getElementById('category');
     category.value = '';
@@ -128,8 +127,7 @@ function App() {
 
 // process quotation value 
 function calculate(formData) { 
-  const result = document.getElementById('result');
- 
+  const result = document.getElementById('result'); 
     switch(formData.service) {
       case 'incorporation & business accounts registration':
         document.getElementById('service2').style.display = 'block'; 
@@ -334,17 +332,7 @@ function calculate(formData) {
             ))}
           </ul>
         </div>
-      } */}
-      {submitting &&
-        <div>
-          You are submitting the following:
-          <ul>
-            {Object.entries(formData).map(([name, value]) => (
-              <li key={name}><strong>{name}</strong>: {value.toString()}</li>
-            ))}
-          </ul>
-        </div>
-      }        
+      } */}        
       <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
