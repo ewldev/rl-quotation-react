@@ -23,9 +23,9 @@ app.use(express.json());
 // app.get('/', (req, res)=> {res.send("LOOK ITS WORKING!!!") })
 
 // All remaining requests return the React app, so it can handle routing.
-// app.get('*', function(request, response) {
-//   response.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-// });
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
 
 app.post("/sendmail", (req, res) => {sendMail (req, res)});  
  
