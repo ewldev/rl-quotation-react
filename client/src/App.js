@@ -22,8 +22,8 @@ function App() {
     calculate(formData);
    
   // access sendgrid api
-  // fetch('http://localhost:8080/sendmail',{
-   fetch('https://rl-quotation-react.herokuapp.com/sendmail',{
+  fetch('http://localhost:8080/sendmail',{
+  //  fetch('https://rl-quotation-react.herokuapp.com/sendmail',{
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
