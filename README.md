@@ -21,3 +21,13 @@ git clone https://github.com/ewldev/rl-quotation-react.git
 4) run: npm run dev to load application on browser http://localhost:3000/
 
 
+A note about the following error when starting the app after the app is updated:
+
+nodemon] starting `node server.js`
+[0] node:events:505
+[0]       throw er; // Unhandled 'error' event
+[0]       ^
+[0] 
+[0] Error: listen EADDRINUSE: address already in use :::8080
+
+the fix is to delete server's node_modules folder and run npm install to reinstall server modules.
