@@ -1,5 +1,11 @@
+import {resetCategory,
+        resetTransactions,
+        resetServiceValues,
+        resetResultValue } from './resetService';
 
-export const handleFormChange1 = event =>  {
+export const handleFormChange1 = (event, setFormData) =>  {
+    console.log('event, setFormData',event, setFormData)
+    
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
     const result = document.getElementById('result');
@@ -16,7 +22,7 @@ export const handleFormChange1 = event =>  {
     });     
   }  
 
-export const handleFormChange2 = event =>  {
+export const handleFormChange2 = (event, setFormData) =>  {
     resetTransactions();
     resetServiceValues();
     resetResultValue();
@@ -26,7 +32,7 @@ export const handleFormChange2 = event =>  {
     });    
   } 
 
-export const handleFormChange3 = event =>  {
+export const handleFormChange3 = (event, setFormData) =>  {
     resetServiceValues(); 
     resetResultValue();   
     setFormData({      
@@ -35,7 +41,7 @@ export const handleFormChange3 = event =>  {
     });      
   } 
 
-export const handleFormChange4 = event =>  {
+export const handleFormChange4 = (event, setFormData) =>  {
     console.log('handleChange4 event1',event.target.name, event.target.value)   
     resetResultValue();
     setFormData({
