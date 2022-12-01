@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 // import React, { useReducer, useState } from 'react';
+import { resetCategory, resetTransactions, resetServiceValues, resetResultValue } from './services/resetService'
 import './App.css';
 
 const formReducer = (state, event) => {  
@@ -50,10 +51,10 @@ function App() {
     service2.style.display = 'none';
     service3.style.display = 'none';
     result.style.display = 'inline';      
-    resetCategory();  
-    resetTransactions();
-    resetServiceValues();
-    resetResultValue(); 
+    resetCategory(formData);  
+    resetTransactions(formData);
+    resetServiceValues(formData);
+    resetResultValue(formData); 
     setFormData({
       name: event.target.name,
       value: event.target.value,      
@@ -61,9 +62,9 @@ function App() {
   }  
 
   const handleChange2 = event =>  {
-    resetTransactions();
-    resetServiceValues();
-    resetResultValue();
+    resetTransactions(formData);
+    resetServiceValues(formData);
+    resetResultValue(formData);
     setFormData({
       name: event.target.name,
       value: event.target.value
@@ -71,8 +72,8 @@ function App() {
   } 
 
   const handleChange3 = event =>  {
-    resetServiceValues(); 
-    resetResultValue();   
+    resetServiceValues(formData); 
+    resetResultValue(formData);   
     setFormData({      
       name: event.target.name,
       value: event.target.value,
@@ -81,7 +82,7 @@ function App() {
 
   const handleChange4 = event =>  {
     console.log('handleChange4 event1',event.target.name, event.target.value)   
-    resetResultValue();
+    resetResultValue(formData);
     setFormData({
       name: event.target.name,
       value: event.target.value
@@ -95,35 +96,35 @@ function App() {
     });  
   }  
   
-  function resetCategory() {
-    const category = document.getElementById('category');
-    category.value = '';
-    formData.category = '';
-  }
+  // function resetCategory() {
+  //   const category = document.getElementById('category');
+  //   category.value = '';
+  //   formData.category = '';
+  // }
 
-  function resetTransactions() {
-    const compilation = document.getElementById('compilationTxn');
-    compilation.value = '';
-    formData.compilationTxn = '';
-  }
+  // function resetTransactions() {
+  //   const compilation = document.getElementById('compilationTxn');
+  //   compilation.value = '';
+  //   formData.compilationTxn = '';
+  // }
 
-  function resetServiceValues() {
-    const fiftyTxn = document.getElementById('fiftyService');
-    const oneFiftyTxn = document.getElementById('oneFiftyService');  
-    const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');   
-    fiftyTxn.value = '';
-    oneFiftyTxn.value = ''; 
-    oneFiftyPlusTxn.value = '';   
-    formData.fiftyService = '';
-    formData.oneFiftyService = ''; 
-    formData.oneFiftyPlusService = '';     
-  }
+  // function resetServiceValues() {
+  //   const fiftyTxn = document.getElementById('fiftyService');
+  //   const oneFiftyTxn = document.getElementById('oneFiftyService');  
+  //   const oneFiftyPlusTxn = document.getElementById('oneFiftyPlusService');   
+  //   fiftyTxn.value = '';
+  //   oneFiftyTxn.value = ''; 
+  //   oneFiftyPlusTxn.value = '';   
+  //   formData.fiftyService = '';
+  //   formData.oneFiftyService = ''; 
+  //   formData.oneFiftyPlusService = '';     
+  // }
 
-  function resetResultValue() { 
-    console.log('resetResultValue1',formData.result);    
-    formData.result = '';
-    console.log('resetResultValue2',formData.result);
-  }
+  // function resetResultValue() { 
+  //   console.log('resetResultValue1',formData.result);    
+  //   formData.result = '';
+  //   console.log('resetResultValue2',formData.result);
+  // }
 
 // process quotation value 
 function calculate(formData) { 
