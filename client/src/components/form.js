@@ -1,7 +1,87 @@
-import {emailInput, formData, handleSubmit, handleChange1, handleChange2, handleChange3, handleChange4} from '../App';
+// import React, { useReducer } from 'react';
+// import { resetCategory, resetTransactions, resetServiceValues, resetResultValue } from '../services/resetService'
+// import setResult from '../services/setResultService';
+// import {formReducer} from '../reducer';
+
 import '../App.css';
 
-export const Form = () => {
+// const formReducer = (state, event) => {  
+//     console.log('reducer state, event', state, event)
+//     return {
+//         ...state,
+//         [event.name]: event.value,      
+//       }
+//   } 
+
+const Form = ({handleChange1, handleChange2, handleChange3, handleChange4, emailInput, onSubmit, formData, setFormData}) => {
+    // console.log('onSubmit',...onSubmit)
+    console.log('onSubmit',onSubmit)
+    console.log('formData',formData)
+    console.log('setFormData',setFormData)
+    // console.log('formData',formData)
+    // console.log('fsetFormData',setFormData)
+    // const [formData, setFormData] = useReducer(formReducer, {});
+
+    // const handleSubmit = (event) => {
+    //     console.log('handleSubmit formData.result',formData.result) 
+    //     event.preventDefault();
+    //     setResult(formData, setFormData); // process quotation value 
+    // }    
+        // const handleChange1 = event =>  {
+
+        //     console.log('app handleChange1 event',event)
+        //     console.log('app handleChange1 setFormData',event.setFormData)        
+        
+        //     const service2 = document.getElementById('service2');
+        //     const service3 = document.getElementById('service3');
+        //     const result = document.getElementById('result');
+        //     service2.style.display = 'none';
+        //     service3.style.display = 'none';
+        //     result.style.display = 'inline';      
+        //     resetCategory(event.formData);  
+        //     resetTransactions(event.formData);
+        //     resetServiceValues(event.formData);
+        //     resetResultValue(event.formData); 
+        //     event.setFormData({
+        //       name: event.target.name,
+        //       value: event.target.value,      
+        //     });     
+        //   }  
+        
+        //   const handleChange2 = event =>  {
+        //     resetTransactions(event.formData);
+        //     resetServiceValues(event.formData);
+        //     resetResultValue(event.formData);
+        //     event.setFormData({
+        //       name: event.target.name,
+        //       value: event.target.value
+        //     });    
+        //   } 
+        
+        //   const handleChange3 = event =>  {
+        //     resetServiceValues(event.formData); 
+        //     resetResultValue(event.formData);   
+        //     event.setFormData({      
+        //       name: event.target.name,
+        //       value: event.target.value,
+        //     });      
+        //   } 
+        
+        //   const handleChange4 = event =>  {
+        //     console.log('handleChange4 event1',event.target.name, event.target.value)   
+        //     resetResultValue(event.formData);
+        //     event.setFormData({
+        //       name: event.target.name,
+        //       value: event.target.value
+        //     });  
+        //   }
+        
+        //   const emailInput = event => {
+        //     event.setFormData({
+        //       name: event.target.name,
+        //       value: event.target.value
+        //     });  
+        //   }      
 
 return(
     <div id="container">
@@ -17,7 +97,7 @@ return(
           </ul>
         </div>
       } */}        
-      <form id="form" onSubmit={handleSubmit}>
+      <form id="form" onSubmit={onSubmit}>
         
           <label htmlFor="service">Type of service</label>                
           <select name="service" id="service"
@@ -136,3 +216,5 @@ return(
     </div>
   );
 };
+
+export default Form;

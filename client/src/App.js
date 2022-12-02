@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 // import React, { useReducer, useState } from 'react';
+import Form from './components/form';
+// import {formReducer} from './reducer';
+
 import { resetCategory, resetTransactions, resetServiceValues, resetResultValue } from './services/resetService'
 // import { handleFormChange1, handleFormChange2, handleFormChange3, handleFormChange4 } from './services/formService'
 import setResult from './services/setResultService'
@@ -47,6 +50,10 @@ function App() {
   }        
     
   const handleChange1 = event =>  {
+
+    console.log('app handleChange1 event',event)
+    console.log('app handleChange1 setFormData',setFormData)        
+
     const service2 = document.getElementById('service2');
     const service3 = document.getElementById('service3');
     const result = document.getElementById('result');
@@ -99,9 +106,10 @@ function App() {
   }  
   
   return(
-    <div id="container">
+    <>
+    {/* <div id="container">
       <button id='button-close1'>close</button>
-      <h1>Get an Instant Quotation</h1>
+      <h1>Get an Instant Quotation</h1> */}
     {/*  {submitting &&
         <div>
           You are submitting the following:
@@ -112,7 +120,7 @@ function App() {
           </ul>
         </div>
       } */}        
-      <form id="form" onSubmit={handleSubmit}>
+      {/* <form id="form" onSubmit={handleSubmit}>
         
           <label htmlFor="service">Type of service</label>                
           <select name="service" id="service"
@@ -208,16 +216,16 @@ function App() {
           <label htmlFor="result">Estimated cost of service</label>
           <output name="result" id="result">  
           {formData.result}
-          </output>          
+          </output>           */}
           
           {/* Incorporation & business accounts registration */}
-          <div id="service2">
+          {/* <div id="service2">
           <p>$800 <br></br>
           business trade name add $100</p>
-          </div>
+          </div> */}
 
           {/*Personal tax preparation*/}
-          <div id="service3">
+          {/* <div id="service3">
           <p>standard $150 <br></br>
             capital gain/loss add $100  <br></br>
             self-employed business add $250 <br></br>
@@ -228,7 +236,18 @@ function App() {
 
       <button id='button-close2'>back to our site</button>
 
-    </div>
+    </div> */}
+
+    <Form 
+      handleChange1={handleChange1}
+      handleChange2={handleChange2}
+      handleChange3={handleChange3}
+      handleChange4={handleChange4}
+      emailInput={emailInput}
+      onSubmit={handleSubmit} 
+      formData={formData}
+      setFormData={setFormData}/>
+    </>
   )
 }
 
