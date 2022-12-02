@@ -1,104 +1,9 @@
-import React, { useReducer } from 'react';
-// import React, { useReducer, useState } from 'react';
-import { resetCategory, resetTransactions, resetServiceValues, resetResultValue } from './services/resetService'
-// import { handleFormChange1, handleFormChange2, handleFormChange3, handleFormChange4 } from './services/formService'
-import setResult from './services/setResultService'
-import './App.css';
+import {emailInput, formData, handleSubmit, handleChange1, handleChange2, handleChange3, handleChange4} from '../App';
+import '../App.css';
 
-const formReducer = (state, event) => {  
-  console.log('reducer state, event', state, event)
-  return {
-      ...state,
-      [event.name]: event.value,      
-    }
-} 
-  
-function App() {
-  const [formData, setFormData] = useReducer(formReducer, {});
-  // const [submitting, setSubmitting] = useState(false);
-  
-  console.log('App formData',formData)   
- 
-  const handleSubmit = (event) => {
-    console.log('handleSubmit formData.result',formData.result) 
-    event.preventDefault();
-    setResult(formData, setFormData); // process quotation value 
-   
-  // access sendgrid api
-  fetch('http://localhost:8080/sendmail',{
-  //  fetch('https://rl-quotation-react.herokuapp.com/sendmail',{
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          service: formData.service,
-          category: formData.category,
-          compilationTxn: formData.compilationTxn,
-          fiftyService: formData.fiftyService,
-          oneFiftyService: formData.oneFiftyService,
-          oneFiftyPlusService: formData.oneFiftyPlusService,
-          result: formData.result,
-          email: formData.email
-         })  
-      })      
-      .then(response => response.json())    
-      .catch(err => console.log(err))      
-  
-  // setSubmitting(true); 
-  }        
-    
-  const handleChange1 = event =>  {
-    const service2 = document.getElementById('service2');
-    const service3 = document.getElementById('service3');
-    const result = document.getElementById('result');
-    service2.style.display = 'none';
-    service3.style.display = 'none';
-    result.style.display = 'inline';      
-    resetCategory(formData);  
-    resetTransactions(formData);
-    resetServiceValues(formData);
-    resetResultValue(formData); 
-    setFormData({
-      name: event.target.name,
-      value: event.target.value,      
-    });     
-  }  
+export const Form = () => {
 
-  const handleChange2 = event =>  {
-    resetTransactions(formData);
-    resetServiceValues(formData);
-    resetResultValue(formData);
-    setFormData({
-      name: event.target.name,
-      value: event.target.value
-    });    
-  } 
-
-  const handleChange3 = event =>  {
-    resetServiceValues(formData); 
-    resetResultValue(formData);   
-    setFormData({      
-      name: event.target.name,
-      value: event.target.value,
-    });      
-  } 
-
-  const handleChange4 = event =>  {
-    console.log('handleChange4 event1',event.target.name, event.target.value)   
-    resetResultValue(formData);
-    setFormData({
-      name: event.target.name,
-      value: event.target.value
-    });  
-  }
-
-  const emailInput = event => {
-    setFormData({
-      name: event.target.name,
-      value: event.target.value
-    });  
-  }  
-  
-  return(
+return(
     <div id="container">
       <button id='button-close1'>close</button>
       <h1>Get an Instant Quotation</h1>
@@ -229,25 +134,5 @@ function App() {
       <button id='button-close2'>back to our site</button>
 
     </div>
-  )
-}
-
-
-// close buttons
-window.onload = function(){
-  document.getElementById('button-close1').onclick = function(){
-      /* this.parentNode.parentNode.parentNode
-       .removeChild(this.parentNode.parentNode);
-       return false;*/
-    document.getElementById('container').style.display = 'none'; 
-  };
-  document.getElementById('button-close2').onclick = function(){
-    // this.parentNode.parentNode.parentNode
-    // .removeChild(this.parentNode.parentNode);
-    // return false;
-    document.getElementById('container').style.display = 'none';  
-  };
+  );
 };
-
-
-export default App;  

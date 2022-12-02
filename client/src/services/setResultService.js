@@ -1,6 +1,6 @@
-export const setResultService = (formData, setFormData) => { 
+export default function setResult(formData, setFormData) { 
 
-  console.log('setFormData', setFormData)
+  console.log('setResultService setFormData', setFormData)
    
     const result = document.getElementById('result'); 
       switch(formData.service) {
