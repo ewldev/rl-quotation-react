@@ -23,9 +23,7 @@ export const resetServiceValues = (formData) => {
 }
 
 export const resetResultValue = (formData) => { 
-    // console.log('resetResultValue1',formData.result);    
     formData.result = '';
-    // console.log('resetResultValue2',formData.result);
 }
 
 const resetService = { resetCategory, resetTransactions, resetServiceValues, resetResultValue }
