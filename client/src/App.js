@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Form from './components/form';
+import Form from './components/Form';
 import { resetCategory, resetTransactions, resetServiceValues, resetResultValue } from './services/resetService'
 import setResult from './services/setResultService'
 import './App.css';
