@@ -1,4 +1,4 @@
-# A quotation system to generate instant service costs based on multiple selections by users
+# A system for generating instant service quotes based on user selections
 
 Front end created with React
 
