@@ -139,10 +139,14 @@ return(
 // close buttons
 window.onload = function(){
   document.getElementById('button-close1').addEventListener('click', function() {
+    // Reset the form
+    document.getElementById('rlquote').reset();
     // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');
   });  
   document.getElementById('button-close2').addEventListener('click', function() {
+    // Reset the form
+    document.getElementById('rlquote').reset();
       // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');  
   });
