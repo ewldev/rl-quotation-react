@@ -138,12 +138,22 @@ return(
 
 // close buttons
 window.onload = function(){
-    document.getElementById('button-close1').onclick = function(){
-        document.getElementById('container').style.display = 'none'; 
-    };
-    document.getElementById('button-close2').onclick = function(){
-        document.getElementById('container').style.display = 'none';  
-    };
-  };
+  document.getElementById('button-close1').addEventListener('click', function() {
+    // Send a message to the parent Wix page to hide the form
+    window.parent.postMessage('hideForm', '*');
+  });  
+  document.getElementById('button-close2').addEventListener('click', function() {
+      // Send a message to the parent Wix page to hide the form
+    window.parent.postMessage('hideForm', '*');  
+  });
+};  
+// window.onload = function(){
+//     document.getElementById('button-close1').onclick = function(){
+//         document.getElementById('container').style.display = 'none'; 
+//     };
+//     document.getElementById('button-close2').onclick = function(){
+//         document.getElementById('container').style.display = 'none';  
+//     };
+//   };
 
 export default Form;
