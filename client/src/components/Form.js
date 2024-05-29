@@ -4,7 +4,7 @@ const Form = ({handleChange1, handleChange2, handleChange3, handleChange4, email
    
 return(
     <div id="container">
-      <button id='button-close1'>close</button>
+      <button id="button-close1">close</button>
       <h1>Get an Instant Quotation</h1>
     {/*  {submitting &&
         <div>
@@ -130,7 +130,7 @@ return(
       
       </form>      
 
-      <button id='button-close2'>back to our site</button>
+      <button id="button-close2">back to our site</button>
 
     </div>
   );
@@ -140,13 +140,13 @@ return(
 window.onload = function(){
   document.getElementById('button-close1').addEventListener('click', function() {
     // Reset the form
-    document.getElementById('rlquote').reset();
+    document.getElementById('form').reset();
     // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');
   });  
   document.getElementById('button-close2').addEventListener('click', function() {
     // Reset the form
-    document.getElementById('rlquote').reset();
+    document.getElementById('form').reset();
       // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');  
   });
