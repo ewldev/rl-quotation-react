@@ -139,15 +139,23 @@ return(
 // close buttons
 window.onload = function(){
   document.getElementById('button-close1').addEventListener('click', function() {
-    // Reset the form
+    // Reset form and clear result
     document.getElementById('form').reset();
+    document.getElementById('result').value = '';
+    document.getElementById('service2').style.display = 'none';
+    document.getElementById('service3').style.display = 'none';
+    document.getElementById('result').style.display = 'inline';
     // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');
   });  
   document.getElementById('button-close2').addEventListener('click', function() {
-    // Reset the form
+    // Reset form and clear result
     document.getElementById('form').reset();
-      // Send a message to the parent Wix page to hide the form
+    document.getElementById('result').value = '';
+    document.getElementById('service2').style.display = 'none';
+    document.getElementById('service3').style.display = 'none';
+    document.getElementById('result').style.display = 'inline';    
+    // Send a message to the parent Wix page to hide the form
     window.parent.postMessage('hideForm', '*');  
   });
 };  
