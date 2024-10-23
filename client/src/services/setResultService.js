@@ -1,8 +1,6 @@
 export default function setResult(formData, setFormData) { 
 
-  console.log('setResultService setFormData', setFormData)
-   
-    const result = document.getElementById('result'); 
+  const result = document.getElementById('result'); 
       switch(formData.service) {
         case 'incorporation & business accounts registration':
           document.getElementById('service2').style.display = 'block'; 

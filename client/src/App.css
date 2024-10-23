@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Sen&display=swap");
 
-/* html {
-  box-sizing: border-box;
-} */
-
 #root {
   margin: 0;
   min-height: 100vh;
@@ -17,7 +13,6 @@
   width: 100%;
   color: #fff1e2;
   background: #4A7BB8;
- /* background: #1D67CD; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +33,6 @@
   border-radius: 50%;
   background: transparent;
   color: #335783;
-  /* color: #1da1f2; */
   font: inherit;
   text-indent: 100%;
   cursor: pointer;
@@ -100,9 +94,7 @@ h1 {
   #form button {
     cursor: pointer;
     color: #2c2102;    
-    /* color: #0c52b4;*/
     background: #e99b0c;
-    /* background: #bacae2; */
     border: none;
     border-radius: 5px;
     height: 41px;
@@ -115,7 +107,6 @@ h1 {
   }
 
   #form button:hover {
-    /* filter: brightness(200%); */
     color: rgb(31, 28, 28);
     background: orange;
   }  
@@ -163,21 +154,10 @@ h1 {
     margin: 5px 0;
   }
   
-  /* .message-container {
-    border-radius: 5px;
-    width: 90%;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    color: black;
-  }  */
-  
   #button-close2 {
     cursor: pointer;
     color: #2c2102;
-    /* color: #006aff; */
     background: #a5afbe;
-    /* background: #90bdff; */
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -187,10 +167,8 @@ h1 {
     margin: 15px auto 46px;    
   }
   #button-close2:hover {
-    /* filter: brightness(200%); */
     color: rgb(31, 28, 28);
     background: #c0c9d4;
-    /* background: #e1d5ba;  */
   }
 
 @media screen and (min-width: 500px) {

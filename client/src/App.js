@@ -5,7 +5,6 @@ import setResult from './services/setResultService'
 import './App.css';
 
 const formReducer = (state, event) => {  
-  console.log('reducer state, event', state, event)
   return {
       ...state,
       [event.name]: event.value,      
@@ -14,18 +13,14 @@ const formReducer = (state, event) => {
   
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
-  // const [submitting, setSubmitting] = useState(false);
-  
-  console.log('App formData',formData)   
- 
+   
   const handleSubmit = (event) => {
     console.log('handleSubmit formData.result',formData.result) 
     event.preventDefault();
     setResult(formData, setFormData); // process quotation value 
    
   // access sendgrid api
-  fetch('http://localhost:8080/sendmail',{
-  //  fetch('https://rl-quotation-react.herokuapp.com/sendmail',{
+  fetch('http://localhost:8080/sendmail',{  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -41,8 +36,6 @@ function App() {
       })      
       .then(response => response.json())    
       .catch(err => console.log(err))      
-  
-  // setSubmitting(true); 
   }        
     
   const handleChange1 = event =>  {
@@ -82,7 +75,6 @@ function App() {
   } 
 
   const handleChange4 = event =>  {
-    console.log('handleChange4 event1',event.target.name, event.target.value)   
     resetResultValue(formData);
     setFormData({
       name: event.target.name,
