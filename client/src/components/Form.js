@@ -150,13 +150,15 @@ window.onload = function(){
     window.parent.postMessage('hideForm', '*');  
   });
 };  
-window.onload = function(){
-    document.getElementById('button-close1').onclick = function(){
-        document.getElementById('container').style.display = 'none'; 
-    };
-    document.getElementById('button-close2').onclick = function(){
-        document.getElementById('container').style.display = 'none';  
-    };
-  };
+
+// comment out the following when used on Wix
+// window.onload = function(){
+//     document.getElementById('button-close1').onclick = function(){
+//         document.getElementById('container').style.display = 'none'; 
+//     };
+//     document.getElementById('button-close2').onclick = function(){
+//         document.getElementById('container').style.display = 'none';  
+//     };
+//   };
 
 export default Form;

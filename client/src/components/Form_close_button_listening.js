@@ -4,18 +4,9 @@ const Form = ({handleChange1, handleChange2, handleChange3, handleChange4, email
    
 return(
     <div id="container">
-      <button id='button-close1'>close</button>
+      <button id="button-close1">close</button>
       <h1>Get an Instant Quotation</h1>
-    {/*  {submitting &&
-        <div>
-          You are submitting the following:
-          <ul>
-            {Object.entries(formData).map(([name, value]) => (
-              <li key={name}><strong>{name}</strong>: {value.toString()}</li>
-            ))}
-          </ul>
-        </div>
-      } */}        
+    
       <form id="form" onSubmit={onSubmit}>
         
           <label htmlFor="service">Type of service</label>                
@@ -130,13 +121,35 @@ return(
       
       </form>      
 
-      <button id='button-close2'>back to our site</button>
+      <button id="button-close2">back to our site</button>
 
     </div>
   );
 };
 
 // close buttons
+window.onload = function(){
+  document.getElementById('button-close1').addEventListener('click', function() {
+    // Reset form and clear result
+    document.getElementById('form').reset();
+    document.getElementById('result').value = '';
+    document.getElementById('service2').style.display = 'none';
+    document.getElementById('service3').style.display = 'none';
+    document.getElementById('result').style.display = 'inline';
+    // Send a message to the parent Wix page to hide the form
+    window.parent.postMessage('hideForm', '*');
+  });  
+  document.getElementById('button-close2').addEventListener('click', function() {
+    // Reset form and clear result
+    document.getElementById('form').reset();
+    document.getElementById('result').value = '';
+    document.getElementById('service2').style.display = 'none';
+    document.getElementById('service3').style.display = 'none';
+    document.getElementById('result').style.display = 'inline';    
+    // Send a message to the parent Wix page to hide the form
+    window.parent.postMessage('hideForm', '*');  
+  });
+};  
 window.onload = function(){
     document.getElementById('button-close1').onclick = function(){
         document.getElementById('container').style.display = 'none'; 
